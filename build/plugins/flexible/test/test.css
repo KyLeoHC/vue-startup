@@ -1,0 +1,28 @@
+.container .content,
+.app .new {
+  width: 100px;
+  height: 100px; /*px*/
+  border: 1px solid #fff; /*hair*/
+  font-size: 24px; /*rem*/
+  margin-top: 0;
+}
+
+.new {
+  position: absolute;
+  left: 102px;
+  top: 70px;
+  width: 240px; /*px*/
+  height: 240px; /*px*/
+  background: url(/static/images/home/ad_xsth.png) no-repeat; /*img url*/
+  background-size: contain;
+}
+
+.new-2 {
+  position: absolute;
+  left: 102px;
+  top: 70px;
+  width: 240px; /*px*/
+  height: 240px; /*px*/
+  background: url(/static/images/home/ad_jjth.png?t=ss.png) no-repeat; /*img url*/
+  background-size: contain;
+}

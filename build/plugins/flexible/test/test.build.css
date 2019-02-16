@@ -1,0 +1,43 @@
+.container .content,
+.app .new {
+  width: 100px;
+  height: 50px;
+  border: 1px solid #fff;
+  font-size: 0.32rem;
+  margin-top: 0;
+}
+
+.new {
+  position: absolute;
+  left: 102px;
+  top: 70px;
+  width: 120px;
+  height: 120px;
+  background: url(/static/images/home/ad_xsth.png) no-repeat;
+  background-size: contain;
+}
+
+.new-2 {
+  position: absolute;
+  left: 102px;
+  top: 70px;
+  width: 120px;
+  height: 120px;
+  background: url(/static/images/home/ad_jjth.png?t=ss.png) no-repeat;
+  background-size: contain;
+}
+
+.hairline .container .content,
+.hairline .app .new {
+  border-width: .5px!important;
+}
+
+@media only screen and  (-webkit-min-device-pixel-ratio: 3) {
+  .new {
+    background-image: url(/static/images/home/ad_xsth@3x.png);
+  }
+
+  .new-2 {
+    background-image: url(/static/images/home/ad_jjth@3x.png?t=ss.png);
+  }
+}

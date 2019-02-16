@@ -1,0 +1,91 @@
+blackColor = #333;
+greenColor = #329a39;
+orangeColor = #ff5900;
+borderColor = #eee;
+placeholderColor = #ccc;
+bgColor = #f5f5f5;
+navBarHeight = 88px;
+
+.iconfont {
+  // 这个样式类是没用的，仅仅是为了让IDE能智能提示出这个类，快速填写
+}
+
+html, body {
+  height 100%
+}
+
+.color-333 {
+  color #333
+}
+
+.color-666 {
+  color #666
+}
+
+.color-999 {
+  color #999
+}
+
+.color-green {
+  color greenColor
+}
+
+.color-orange {
+  color orangeColor
+}
+
+.reset-input-style {
+  border 0
+  padding 0
+  -webkit-appearance none
+}
+
+.reset-btn-style {
+  border 0
+  padding 0
+}
+
+.ellipsis {
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+  -o-text-overflow ellipsis
+}
+
+.common-scroll {
+  transform translateZ(0)
+  -webkit-overflow-scrolling touch
+
+  &::-webkit-scrollbar {
+    display none
+    background-color transparent
+  }
+}
+
+.common-scroll-y {
+  height 100%
+  overflow-y auto
+  @extends .common-scroll
+}
+
+input {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    font-size 28px; /*px*/
+    color placeholderColor
+  }
+
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-size 28px; /*px*/
+    color placeholderColor
+  }
+
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-size 28px; /*px*/
+    color placeholderColor
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-size 28px; /*px*/
+    color placeholderColor
+  }
+}

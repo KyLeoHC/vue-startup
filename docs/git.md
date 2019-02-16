@@ -1,4 +1,4 @@
-# 提交信息格式
+# Git提交格式
 > 本规范从[vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md)和[angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)规范中修改得来。
 
 一个提交信息包含`header`、`body`和`footer`:
