@@ -14,7 +14,6 @@
   };
 </script>
 <style lang="stylus">
-  @import "~styles/flexible.styl"
   @import "~styles/common.styl"
   @import "~styles/mobile.styl"
   @import "~styles/theme.styl"
