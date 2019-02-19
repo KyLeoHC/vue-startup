@@ -1,6 +1,50 @@
 # vue-startup
 
-一个基于vue的示例项目，与此同时，也包含了一些项目的约束和规范。
+一个基于vue的示例项目，既是一个单页应用，也是一个多页应用。与此同时，也包含了一些项目的约束和规范。
+
+## 开发
+
+```bash
+# 克隆项目
+git clone https://github.com/KyLeoHC/vue-startup.git
+
+# 安装依赖(如果不是为了更新依赖包，建议运行npm ci命令，确保依赖包的版本一致，尤其是测试和正式环境的打包)，尽量不要使用cnpm安装
+npm i 或者 npm ci
+
+# 启动服务
+npm run dev
+```
+
+浏览器访问[http://localhost:8089/dev/demo/list](http://localhost:8089/dev/demo/list)
+
+## 发布
+
+```bash
+# 构建打包开发环境
+npm run build:dev
+
+# 构建打包测试环境
+npm run build:test
+
+# 构建打包预生产环境
+npm run build:pre
+
+# 构建打包生产环境
+npm run build:prod
+```
+
+## 其它有用的命令或者选项
+
+```bash
+# 构建打包完成后展示模块分析结果
+npm run build:prod --report
+
+# 检查代码格式
+npm run lint
+
+# 自动纠正代码格式
+npm run lint -- --fix
+```
 
 ## 目录结构说明
 
@@ -26,7 +70,7 @@
 │   ├── components: 项目全局通用组件目录
 │   ├── directives: 项目全局通用指令目录
 │   ├── lang: 项目全局通用国际化语言包目录
-│   ├── mock: 项目全局通用mock数据目录
+│   ├── mock: 项目全局通用mock数据目录(如果采用mock系统，则此目录可忽略不要，比如easy-mock)
 │   ├── project: 项目主功能业务模块目录(可放置多个子项目，实现多页应用)
 │   │   ├── demo: 子项目目录
 │   │   │   ├── app.vue: 入口组件
@@ -49,7 +93,14 @@
     └── images: 项目图片资源放置目录
 ```
 
-## 未完待续
+## 关于本项目
+
+本项目可以作为一个参考项目提供基于vue+webpack的前端环境搭建思路，但是建议充分了解本项目的构建配置方式，
+为的是后期可以根据公司业务的复杂度去进行高度定制化，或者根据所在团队成员的习惯进行改动。
+
+## 其它规范文档
+
+[Git提交规范](https://github.com/KyLeoHC/vue-startup/blob/master/docs/git%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83.md)
 
 ## License
 
