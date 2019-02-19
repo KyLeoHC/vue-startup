@@ -63,7 +63,6 @@
           this.finished = this.list.length >= data.total;
         }).catch(response => {
           this.isError = true;
-          console.error(response);
         }).finally(() => {
           this.isRefreshing = false;
           this.isLoadingMore = false;
