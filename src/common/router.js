@@ -5,7 +5,8 @@
 import { publicPath } from './env';
 
 const router = {
-  generateUrl: ({ history, project, path, query = {} }) => {
+  history: true,
+  generateUrl({ history = this.history, project = '', path = '', query = {} }) {
     const queryList = [];
     for (let key in query) {
       queryList.push(`${key}=${encodeURIComponent(query[key])}`);

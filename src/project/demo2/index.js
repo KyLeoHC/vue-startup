@@ -7,19 +7,10 @@ import {
 import routeConfig from './routeConfig';
 import router from '@/common/router';
 import App from './app.vue';
-import {
-  List,
-  NavBar,
-  PullRefresh
-} from 'vant';
 // import vConsole from 'vconsole';
 // new vConsole();
 
 Vue.prototype.$$router = router;
-
-Vue.use(List)
-  .use(NavBar)
-  .use(PullRefresh);
 
 // 这里之所以会加多一段Promise.resolve().finally()冗余代码
 // 是因为babel7在面对finally但是没发现Promise关键字的时候

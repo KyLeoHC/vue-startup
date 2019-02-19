@@ -11,6 +11,9 @@
       <div>name: {{ $route.query.name }}</div>
       <div>email: {{ $route.query.email }}</div>
     </div>
+    <a href="javascript:;" @click="linkToDemo2">
+      跳转到demo2
+    </a>
   </div>
 </template>
 <script>
@@ -22,6 +25,14 @@
     methods: {
       onClickLeft() {
         history.go(-1);
+      },
+      linkToDemo2() {
+        this.$$router.push({
+          project: 'demo2',
+          query: {
+            from: 'demo'
+          }
+        });
       }
     }
   };
