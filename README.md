@@ -4,13 +4,10 @@
 ```
 .
 ├── build
-│   ├── clean.js
 │   ├── plugins
 │   │   ├── flexible
 │   │   └── omit-css-webpack-plugin
-│   ├── webpack.config.base.js
-│   ├── webpack.config.dev.js
-│   └── webpack.config.dist.js
+│   │   ......
 ├── config
 │   ├── config.dev.js
 │   ├── config.pre.js
@@ -25,7 +22,6 @@
 │   │   └── router.js
 │   ├── components
 │   ├── directives
-│   │   └── clickoutside.js
 │   ├── lang
 │   ├── mock
 │   ├── project
