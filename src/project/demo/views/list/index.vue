@@ -10,13 +10,16 @@
       @refresh="onRefresh">
       <van-list
         v-model="isLoadingMore"
+        :error.sync="isError"
         :finished="finished"
         finished-text="没有更多了"
+        error-text="请求失败，点击重新加载"
         @load="onLoad">
         <div class="item"
              v-for="(item, index) in list"
              :key="item.id"
              @click="linkToDetail(item)">
+          <p>{{ item.time }}</p>
           <p>{{ index }} - {{ item.name }}</p>
           <p>{{ item.email }}</p>
         </div>
@@ -32,8 +35,9 @@
     data() {
       return {
         list: [],
-        page: 1,
+        page: 0,
         pageSize: 20,
+        isError: false,
         isRefreshing: false,
         isLoadingMore: false,
         finished: false
@@ -54,10 +58,11 @@
         fetchListData({
           page: ++this.page,
           pageSize: this.pageSize
-        }).then(response => {
-          this.list = reset ? response.data.list : this.list.concat(response.data.list);
-          this.finished = this.list.length >= response.data.total;
+        }).then(data => {
+          this.list = reset ? data.list : this.list.concat(data.list);
+          this.finished = this.list.length >= data.total;
         }).catch(response => {
+          this.isError = true;
           console.error(response);
         }).finally(() => {
           this.isRefreshing = false;

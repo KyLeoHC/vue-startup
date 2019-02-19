@@ -1,21 +1,18 @@
 import http from '@/common/http';
 
-const SUCCESS_CODE = 200;
-
 const fetchListData = params => {
-  return new Promise((resolve, reject) => {
-    http.get('/list', { params })
-      .then(response => {
-        if (response.code === SUCCESS_CODE) {
-          resolve(response);
-        } else {
-          reject(response);
-        }
-      })
-      .catch(response => {
-        reject(response);
+  return http.get('/list', { params })
+    .then(response => {
+      // 这里进行数据处理
+      response.data.list.forEach(item => {
+        item.time = new Date().getTime();
       });
-  });
+      return response.data;
+    })
+    .catch(response => {
+      console.log(response);
+      return Promise.reject(response);
+    });
 };
 
 export {

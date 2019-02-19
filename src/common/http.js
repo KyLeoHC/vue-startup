@@ -17,11 +17,14 @@ http.interceptors.request.use(function (config) {
 });
 
 http.interceptors.response.use(function (response) {
+  // 统一的服务器状态码判断处理
+  const SUCCESS_CODE = 200;
   const data = response.data || {};
-  if (data.code === 500) {
-    // do something with '500' status code....
+  if (data.code === SUCCESS_CODE) {
+    return data;
+  } else {
+    return Promise.reject(data);
   }
-  return data;
 });
 
 export default http;
