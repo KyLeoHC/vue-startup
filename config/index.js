@@ -27,7 +27,7 @@ module.exports = Object.assign({
   // 资源加载路径
   publicPath: '',
   // 是否开启bundle分析报告，可以直观观察到模块的引用情况，以进行下一步的优化
-  bundleAnalyzerReport: false,
+  bundleAnalyzerReport: process.env.npm_config_report || false,
   // 执行编译任务前需要清理文件以及文件夹
   cleanFiles: ['./dist.zip', './dist'],
   // 图片等静态资源的cdn路径
