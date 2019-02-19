@@ -18,11 +18,16 @@ Vue.use(List)
   .use(NavBar)
   .use(PullRefresh);
 
-loadCSSByArray([
-  `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
-  ...(window.__cssList || []),
-]).finally(() => {
-  Vue.use(VueRouter);
-  App.router = new VueRouter(routeConfig);
-  const app = new Vue(App).$mount('#app');
+// 这里之所以会套多一层Promise.resolve().finally()
+// 是因为babel7在面对finally但是没发现Promise关键字的时候
+// 就算你目标函数内部返回值是Promise，babel也不会识别出并且polyfill这个finally方法
+Promise.resolve().finally(() => {
+  loadCSSByArray([
+    `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
+    ...(window.__cssList || []),
+  ]).finally(() => {
+    Vue.use(VueRouter);
+    App.router = new VueRouter(routeConfig);
+    const app = new Vue(App).$mount('#app');
+  });
 });
