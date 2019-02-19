@@ -39,7 +39,10 @@ baseConfig.optimization = {
     }
   },
   minimizer: [
+    // more options:
+    // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
     new UglifyJsPlugin({
+      parallel: true,
       uglifyOptions: {
         output: {
           comments: false,
@@ -51,6 +54,13 @@ baseConfig.optimization = {
 };
 
 baseConfig.plugins = baseConfig.plugins.concat([
+  // more options:
+  // https://github.com/KyLeoHC/inline-source-webpack-plugin
+  new InlineSourceWebpackPlugin({
+    compress: true,
+    rootpath: './src'
+  }),
+  new OmitCSSWebpackPlugin(),
   new OptimizeCSSAssetsPlugin({}),
   new webpack.HashedModuleIdsPlugin(),
   new MiniCssExtractPlugin({
@@ -77,14 +87,6 @@ Object.keys(baseConfig.entry).forEach(name => {
     })
   );
 });
-baseConfig.plugins.push(new OmitCSSWebpackPlugin());
-baseConfig.plugins.push(new InlineSourceWebpackPlugin({
-  compress: true,
-  rootpath: './src'
-}));
-
-// baseConfig.devtool = 'source-map';
-baseConfig.mode = 'production';
 
 if (process.env.BUILD_ENV === 'production') {
   baseConfig.plugins.push(new CopyWebpackPlugin([{
@@ -98,5 +100,8 @@ if (config.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   baseConfig.plugins.push(new BundleAnalyzerPlugin());
 }
+
+// baseConfig.devtool = 'source-map';
+baseConfig.mode = 'production';
 
 module.exports = baseConfig;
