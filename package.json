@@ -9,10 +9,10 @@
   "scripts": {
     "clean": "node ./build/clean.js",
     "dev": "cross-env BUILD_ENV=development webpack-dev-server --progress --config ./build/webpack.config.dev.js",
-    "build:dev": "npm run clean && cross-env BUILD_ENV=development webpack --display-optimization-bailout --config ./build/webpack.config.dist.js",
-    "build:test": "npm run clean && cross-env BUILD_ENV=test webpack --display-optimization-bailout --config ./build/webpack.config.dist.js",
-    "build:pre": "npm run clean && cross-env BUILD_ENV=pre-production webpack --display-optimization-bailout --config ./build/webpack.config.dist.js",
-    "build:prod": "npm run clean && cross-env BUILD_ENV=production webpack --display-optimization-bailout --config ./build/webpack.config.dist.js",
+    "build:dev": "npm run clean && cross-env BUILD_ENV=development webpack --config ./build/webpack.config.dist.js",
+    "build:test": "npm run clean && cross-env BUILD_ENV=test webpack --config ./build/webpack.config.dist.js",
+    "build:pre": "npm run clean && cross-env BUILD_ENV=pre-production webpack --config ./build/webpack.config.dist.js",
+    "build:prod": "npm run clean && cross-env BUILD_ENV=production webpack --config ./build/webpack.config.dist.js",
     "lint": "eslint --ext .js,.vue src build"
   },
   "repository": {

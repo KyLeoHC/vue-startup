@@ -121,7 +121,9 @@ const baseConfig = {
     children: false,
     chunkModules: false,
     entrypoints: false,
-    modules: false
+    modules: false,
+    // Display bailout reasons
+    optimizationBailout: true
   }
 };
 
