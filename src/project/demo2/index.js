@@ -1,16 +1,15 @@
 /* eslint no-unused-vars: 0 comma-dangle: 0 */
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import {
   loadCSSByArray
 } from '@/utils';
-import routeConfig from './routeConfig';
-import router from '@/common/router';
+import router from './router';
+import pageRouter from '@/common/router';
 import App from './app.vue';
 // import vConsole from 'vconsole';
 // new vConsole();
 
-Vue.prototype.$$router = router;
+Vue.prototype.$$router = pageRouter;
 
 // 这里之所以会加多一段Promise.resolve().finally()冗余代码
 // 是因为babel7在面对finally但是没发现Promise关键字的时候
@@ -20,7 +19,6 @@ loadCSSByArray([
   `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
   ...(window.__cssList || []),
 ]).finally(() => {
-  Vue.use(VueRouter);
-  App.router = new VueRouter(routeConfig);
+  App.router = router;
   const app = new Vue(App).$mount('#app');
 });
