@@ -1,14 +1,14 @@
 import { publicPath } from '@/common/env';
 
 const project = 'demo2';
-const getPath = path => `${publicPath}${project}${path || '/'}`;
 
 export default {
   mode: 'history',
+  base: `${publicPath}${project}`,
   routes: [
     {
       name: 'default',
-      path: getPath(),
+      path: '/',
       component: () => import(/* webpackChunkName: "demo2/home" */ './views/home')
     }
   ]
