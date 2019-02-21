@@ -51,6 +51,7 @@ npm run lint -- --fix
 ```
 .
 ├── build: 构建配置文件目录
+│   ├── loaders: 自定义loader放置的目录
 │   ├── plugins: 自定义插件目录(如果不想发布到npm的话)，就放置在这里面
 │   │   ├── flexible: 移动端的自适应方案插件
 │   │   └── omit-css-webpack-plugin: 抽离css插件
@@ -76,6 +77,7 @@ npm run lint -- --fix
 │   │   │   ├── app.vue: 入口组件
 │   │   │   ├── index.html: 入口html模板
 │   │   │   ├── index.js: 入口启动文件
+│   │   │   ├── components: 当前子项目内公用的组件，如果其它子项目也可用，请把目标组件转移到全局组件目录
 │   │   │   ├── store: vuex的数据管理目录(内部代码结构参考vuex官方推荐的目录结构即可)
 │   │   │   ├── views: 子项目的vue视图代码目录
 │   │   │   ├── router: 路由配置目录(子项目也可以不用路由，那么这个目录可忽略)
