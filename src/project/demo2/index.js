@@ -3,6 +3,7 @@ import Vue from 'vue';
 import {
   loadCSSByArray
 } from '@/utils';
+import store from './store';
 import router from './router';
 import pageRouter from '@/common/router';
 import App from './app.vue';
@@ -19,6 +20,7 @@ loadCSSByArray([
   `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
   ...(window.__cssList || []),
 ]).finally(() => {
+  App.store = store;
   App.router = router;
   const app = new Vue(App).$mount('#app');
 });

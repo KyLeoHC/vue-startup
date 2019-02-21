@@ -12,9 +12,14 @@ export default new VueRouter({
   base: `${publicPath}${project}`,
   routes: [
     {
-      name: 'default',
+      name: 'home',
       path: '/',
       component: Home
+    },
+    {
+      name: 'article',
+      path: '/article',
+      component: () => import(/* webpackChunkName: "demo2/article" */ '../views/article')
     }
   ]
 });

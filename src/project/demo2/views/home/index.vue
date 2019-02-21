@@ -1,14 +1,24 @@
 <template>
-  <div class="demo2-container">
-    <div class="logo"></div>
-    <a href="javascript:;" @click="linkToDemo">
-      跳转到demo
-    </a>
+  <div class="home-container">
+    <logo/>
+    <div class="home__link-group">
+      <a href="javascript:;" @click="linkToDemo">
+        跳转到demo
+      </a>
+      <a href="javascript:;" @click="$router.push({name: 'article'})">
+        跳转到article页面
+      </a>
+    </div>
   </div>
 </template>
 <script>
+  import Logo from '../../components/logo';
+
   export default {
-    name: 'Demo2',
+    name: 'Home',
+    components: {
+      Logo
+    },
     methods: {
       linkToDemo() {
         this.$$router.push({
@@ -25,16 +35,18 @@
 <style lang="stylus">
   @import "~styles/common.styl"
 
-  .demo2-container {
+  .home-container {
     font-size 18px
     text-align center
 
-    .logo {
-      width 200px; /*rem*/
-      height @width; /*rem*/
-      margin 20px auto 10px auto
-      background url(/static/images/logo.png) no-repeat
-      background-size cover
+    .home__link-group {
+      a {
+        margin-right 10px
+
+        &:last-child {
+          margin-right 0
+        }
+      }
     }
   }
 </style>
