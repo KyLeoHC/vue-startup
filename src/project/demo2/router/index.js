@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { publicPath } from '@/common/env';
+import Home from '../views/home';
 
 const project = 'demo2';
 
@@ -13,7 +14,7 @@ export default new VueRouter({
     {
       name: 'default',
       path: '/',
-      component: () => import(/* webpackChunkName: "demo2/home" */ '../views/home')
+      component: Home
     }
   ]
 });
