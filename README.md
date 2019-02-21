@@ -100,6 +100,7 @@ npm run lint -- --fix
 
 ## 其它规范文档
 
+[Git分支管理](https://github.com/KyLeoHC/vue-startup/blob/master/docs/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86.md)
 [Git提交规范](https://github.com/KyLeoHC/vue-startup/blob/master/docs/git%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83.md)
 
 ## License
