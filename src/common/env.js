@@ -4,19 +4,19 @@ let publicPath = process.env.PUBLIC_PATH || '';
 
 switch (process.env.NODE_ENV) {
   case 'development':
-    baseUrl = 'https://easy-mock.com/mock/5c67ba51adf6a5499fb8d27d/vue-startup';
+    baseUrl = 'http://10.240.1.138:7300/mock/5c6e56dce7ff53105cabaedc/vue-startup';
     staticPath = '/static';
     break;
   case 'test':
-    baseUrl = 'https://easy-mock.com/mock/5c67ba51adf6a5499fb8d27d/vue-startup';
+    baseUrl = 'http://10.240.1.138:7300/mock/5c6e56dce7ff53105cabaedc/vue-startup';
     staticPath = '/dist/static';
     break;
   case 'pre-production':
-    baseUrl = 'https://easy-mock.com/mock/5c67ba51adf6a5499fb8d27d/vue-startup';
+    baseUrl = 'http://10.240.1.138:7300/mock/5c6e56dce7ff53105cabaedc/vue-startup';
     staticPath = '/dist/static';
     break;
   case 'production':
-    baseUrl = 'https://easy-mock.com/mock/5c67ba51adf6a5499fb8d27d/vue-startup';
+    baseUrl = 'http://10.240.1.138:7300/mock/5c6e56dce7ff53105cabaedc/vue-startup';
     staticPath = '/dist/static';
     break;
 }
