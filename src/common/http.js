@@ -5,7 +5,7 @@ import {
 
 const http = axios.create({
   baseURL: baseUrl,
-  timeout: 2000,
+  timeout: 20000,
   withCredentials: true
 });
 
