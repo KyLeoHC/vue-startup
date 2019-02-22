@@ -2,7 +2,7 @@ let baseUrl = '';
 let staticPath = '';
 let publicPath = process.env.PUBLIC_PATH || '';
 
-switch (process.env.NODE_ENV) {
+switch (process.env.BUILD_ENV) {
   case 'development':
     baseUrl = 'https://easy-mock.com/mock/5c67ba51adf6a5499fb8d27d/vue-startup';
     staticPath = '/static';
