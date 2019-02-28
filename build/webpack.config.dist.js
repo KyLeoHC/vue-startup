@@ -53,22 +53,6 @@ baseConfig.optimization = {
   ]
 };
 
-baseConfig.plugins = baseConfig.plugins.concat([
-  // more options:
-  // https://github.com/KyLeoHC/inline-source-webpack-plugin
-  new InlineSourceWebpackPlugin({
-    compress: true,
-    rootpath: './src'
-  }),
-  new OmitCSSWebpackPlugin(),
-  new OptimizeCSSAssetsPlugin({}),
-  new webpack.HashedModuleIdsPlugin(),
-  new MiniCssExtractPlugin({
-    filename: '[name]/bundle.[contenthash].css',
-    chunkFilename: '[name]/chunk.[contenthash].css'
-  })
-]);
-
 Object.keys(baseConfig.entry).forEach(name => {
   baseConfig.plugins.push(
     new HtmlWebpackPlugin({
@@ -87,6 +71,22 @@ Object.keys(baseConfig.entry).forEach(name => {
     })
   );
 });
+
+baseConfig.plugins = baseConfig.plugins.concat([
+  // more options:
+  // https://github.com/KyLeoHC/inline-source-webpack-plugin
+  new InlineSourceWebpackPlugin({
+    compress: true,
+    rootpath: './src'
+  }),
+  new OmitCSSWebpackPlugin(),
+  new OptimizeCSSAssetsPlugin({}),
+  new webpack.HashedModuleIdsPlugin(),
+  new MiniCssExtractPlugin({
+    filename: '[name]/bundle.[contenthash].css',
+    chunkFilename: '[name]/chunk.[contenthash].css'
+  })
+]);
 
 if (process.env.BUILD_ENV === 'production') {
   baseConfig.plugins.push(new CopyWebpackPlugin([{
