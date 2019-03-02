@@ -8,8 +8,11 @@
 # 克隆项目
 git clone https://github.com/KyLeoHC/vue-startup.git
 
-# 安装依赖(如果不是为了更新依赖包，建议运行npm ci命令，确保依赖包的版本一致，尤其是测试和正式环境的打包)，尽量不要使用cnpm安装
+# 安装依赖(如果不是为了更新依赖包，建议运行npm ci命令，确保依赖包的版本一致，尤其是测试和正式环境的打包)
 npm i 或者 npm ci
+
+# 尽量不要使用cnpm安装，如果实在需要，请仅仅使用淘宝的镜像
+npm install --registry=https://registry.npm.taobao.org
 
 # 启动服务
 npm run dev
@@ -39,11 +42,17 @@ npm run build:prod
 # 构建打包完成后展示模块分析结果
 npm run build:prod --report
 
-# 检查代码格式
+# 检查JS或者html模板代码格式
 npm run lint
 
-# 自动纠正代码格式
+# 自动纠正JS或者html模板代码格式
 npm run lint -- --fix
+
+# 检查css/scss样式代码格式
+npm run stylelint
+
+# 自动纠正css/scss样式代码格式
+npm run stylelint -- --fix
 ```
 
 ## 目录结构说明
@@ -94,6 +103,11 @@ npm run lint -- --fix
 └── static: 项目静态资源放置目录
     └── images: 项目图片资源放置目录
 ```
+
+## 一些额外说明
+
+1. `services`目录的是各种服务代码，一个服务包括了数据获取、数据缓存、数据转换、相关业务处理等逻辑;
+2. `common`和`utils`两个目录有其相似的地方，都是一些全局通用函数或者工具函数，不同之处在于`common`目录的代码是带有当前项目业务性质的，跨项目不一定通用;
 
 ## 关于本项目
 
