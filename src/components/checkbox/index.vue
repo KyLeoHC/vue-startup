@@ -52,22 +52,23 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
+<style lang="scss">
+  @import "~styles/common";
 
   .checkbox {
-    font-size 16px
-    color #333
+    font-size: 16px;
+    color: #333;
 
     &.checkbox--disabled {
       .iconfont {
-        color #848484
+        color: #848484;
       }
     }
 
     .icon-checkbox,
     .icon-checkbox-unselected {
-      color greenColor
+      color: green;
     }
   }
+
 </style>

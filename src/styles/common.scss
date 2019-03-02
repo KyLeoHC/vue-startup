@@ -1,0 +1,69 @@
+@import "variable";
+
+html, body {
+  height: 100%;
+}
+
+.color-333 {
+  color: #333
+}
+
+.color-666 {
+  color: #666
+}
+
+.color-999 {
+  color: #999
+}
+
+.reset-input-style {
+  border: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+.reset-btn-style {
+  border: 0;
+  padding: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+%common-scroll {
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+    background-color: transparent;
+  }
+}
+
+.common-scroll-y {
+  height: 100%;
+  overflow-y: auto;
+  @extend %common-scroll;
+}
+
+input {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    font-size: 28px; /* px */
+    color: $placeholder-color
+  }
+
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-size: 28px; /* px */
+    color: $placeholder-color
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-size: 28px; /* px */
+    color: $placeholder-color
+  }
+}

@@ -21,11 +21,11 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
+<style lang="scss">
+  @import "~styles/common";
 
   .article-container {
-    font-size 18px
-    text-align center
+    font-size: 18px;
+    text-align: center;
   }
 </style>

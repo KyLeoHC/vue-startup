@@ -79,15 +79,15 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
+<style lang="scss">
+  @import "~styles/common";
 
   .list-container {
     .item {
-      padding 30px; /*rem*/
-      font-size 18px
-      border-bottom 1px solid #eee; /*hair*/
-      margin-bottom 10px; /*px*/
+      padding: 30px; /* rem */
+      font-size: 18px;
+      border-bottom: 1px solid #eee; /* hair */
+      margin-bottom: 10px; /* px */
     }
   }
 </style>

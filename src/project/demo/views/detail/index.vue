@@ -37,26 +37,27 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
+<style lang="scss">
+  @import "~styles/common";
 
   .detail-container {
-    font-size 18px
-    text-align center
+    font-size: 18px;
+    text-align: center;
 
     .logo {
-      width 200px; /*rem*/
-      height @width; /*rem*/
-      margin 20px auto 10px auto
-      background url(/static/images/logo.png) no-repeat
-      background-size cover
+      $w: 200px;
+      width: $w; /* rem */
+      height: $w; /* rem */
+      margin: 20px auto 10px auto;
+      background: url(/static/images/logo.png) no-repeat;
+      background-size: cover;
     }
 
     .user-info {
-      font-size 14px
+      font-size: 14px;
 
       & > div {
-        margin 10px
+        margin: 10px;
       }
     }
   }

@@ -13,12 +13,12 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
-  @import "~styles/mobile.styl"
-  @import "~styles/theme.styl"
+<style lang="scss">
+  @import "~styles/common";
+  @import "~styles/mobile";
+  @import "~styles/theme";
 
   #app {
-    height 100%
+    height: 100%;
   }
 </style>

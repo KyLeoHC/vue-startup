@@ -32,19 +32,19 @@
     }
   };
 </script>
-<style lang="stylus">
-  @import "~styles/common.styl"
+<style lang="scss">
+  @import "~styles/common";
 
   .home-container {
-    font-size 18px
-    text-align center
+    font-size: 18px;
+    text-align: center;
 
     .home__link-group {
       a {
-        margin-right 10px
+        margin-right: 10px;
 
         &:last-child {
-          margin-right 0
+          margin-right: 0;
         }
       }
     }

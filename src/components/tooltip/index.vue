@@ -73,34 +73,35 @@
     }
   };
 </script>
-<style lang="stylus">
+<style lang="scss">
   .tooltip {
-    display inline-flex
-    align-items center
+    display: inline-flex;
+    align-items: center;
   }
 
   .tooltip-content {
-    position absolute
-    min-width 10px
-    padding 14px; /*px*/
-    font-size 32px; /*px*/
-    color #fff
-    background #3b413c
-    border-radius 4px
-    z-index 101
+    position: absolute;
+    min-width: 10px;
+    padding: 14px; /* px */
+    font-size: 32px; /* px */
+    color: #fff;
+    background: #3b413c;
+    border-radius: 4px;
+    z-index: 101;
   }
 
   .tooltip-content__arrow {
-    position absolute
-    top -8px
+    position: absolute;
+    top: -8px;
 
     &::before {
-      content ' '
-      display block
-      border 4px solid #3b413c
-      border-top-color transparent
-      border-left-color transparent
-      border-right-color transparent
+      content: '';
+      display: block;
+      border: 4px solid #3b413c;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
     }
   }
+
 </style>

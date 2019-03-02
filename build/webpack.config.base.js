@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
 const config = require('../config');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const devMode = process.env.BUILD_ENV === 'development';
@@ -45,7 +46,7 @@ const baseConfig = {
         }
       },
       {
-        test: /\.styl/,
+        test: /\.scss/,
         exclude: /node_modules/,
         use: [
           {
@@ -59,7 +60,7 @@ const baseConfig = {
             options: {}
           },
           {
-            loader: 'stylus-loader'
+            loader: 'sass-loader'
           }
         ]
       },
@@ -127,13 +128,32 @@ const baseConfig = {
   }
 };
 
+// 扫描所有入口
 const entryList = config.entryList && config.entryList.length
   ? config.entryList
   : glob.sync('./src/project/*');
 
+// 收集需要编译的入口文件
 entryList.map(function (src) {
   const name = path.basename(src);
   baseConfig.entry[name] = `./src/project/${name}/index.js`;
 });
+
+// 收集需要检查样式规范的目录或者文件
+const fileSuffix = '{vue,htm,html,css,sss,less,scss,sass}';
+const stylelintFiles = [
+  `components/**/*.${fileSuffix}`,
+  `styles/**/*.${fileSuffix}`
+];
+Object.keys(baseConfig.entry)
+  .forEach(name => {
+    stylelintFiles.push(`project/${name}/**/*.${fileSuffix}`);
+  });
+baseConfig.plugins.push(
+  new StyleLintPlugin({
+    context: 'src',
+    files: stylelintFiles
+  })
+);
 
 module.exports = baseConfig;
