@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: 0 comma-dangle: 0 */
+/* eslint no-unused-vars: 0 */
 import Vue from 'vue';
 import {
   loadCSSByArray
@@ -26,7 +26,7 @@ Vue.use(List)
 Promise.resolve().finally();
 loadCSSByArray([
   `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
-  ...(window.__cssList || []),
+  ...(window.__cssList || [])
 ]).finally(() => {
   App.router = router;
   const app = new Vue(App).$mount('#app');
