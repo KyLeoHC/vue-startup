@@ -1,15 +1,20 @@
 /*
-  web storage
+ * web storage封装
+ * @author KyLeo
  */
 
 const storage = {
   session: {
     _sessionStorage: window.sessionStorage,
-    set(key, value, needConvert) {
+    set(key, value) {
+      try {
+        const result = JSON.stringify(value);
+        if (/^[{[]/.test(result)) {
+          value = result;
+        }
+      } catch (e) {
+      }
       // 针对浏览器隐身模式下会抛出的异常
-      value = needConvert
-        ? JSON.stringify(value)
-        : value;
       try {
         this._sessionStorage.setItem(key, value);
       } catch (ex) {
@@ -31,11 +36,15 @@ const storage = {
   },
   local: {
     _localStorage: window.localStorage,
-    set(key, value, needConvert) {
+    set(key, value) {
+      try {
+        const result = JSON.stringify(value);
+        if (/^[{[]/.test(result)) {
+          value = result;
+        }
+      } catch (e) {
+      }
       // 针对浏览器隐身模式下会抛出的异常
-      value = needConvert
-        ? JSON.stringify(value)
-        : value;
       try {
         this._localStorage.setItem(key, value);
       } catch (ex) {
