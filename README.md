@@ -70,7 +70,7 @@ npm run stylelint -- --fix
 │   ├── config.pre.js: 预生产环境的配置文件
 │   ├── config.production.js: 生产环境的配置文件
 │   ├── config.test.js: 测试环境的配置文件
-│   └── index.js: 基础配置文件
+│   └── index.ts: 基础配置文件
 ├── docs: 项目其它说明文档目录
 ├── src: 项目源码目录
 │   ├── common: 项目全局通用代码目录(此目录下的通用代码是和本项目的业务息息相关的)
@@ -85,7 +85,7 @@ npm run stylelint -- --fix
 │   │   ├── demo: 子项目目录
 │   │   │   ├── app.vue: 入口组件
 │   │   │   ├── index.html: 入口html模板
-│   │   │   ├── index.js: 入口启动文件
+│   │   │   ├── index.ts: 入口启动文件
 │   │   │   ├── components: 当前子项目内公用的组件，如果其它子项目也可用，请把目标组件转移到全局组件目录
 │   │   │   ├── store: vuex的数据管理目录(内部代码结构参考vuex官方推荐的目录结构即可)
 │   │   │   ├── views: 子项目的vue视图代码目录

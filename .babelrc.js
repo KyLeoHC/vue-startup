@@ -7,9 +7,32 @@ module.exports = {
         "modules": false,
         "useBuiltIns": "usage"
       }
+    ],
+    [
+      "@babel/preset-typescript",
+      {
+        // 目前vue-loader解析出来的ts代码传递给babel-loader处理时，没能认出是ts代码
+        // 所以这里强制所有代码当成ts或者tsx处理
+        "isTSX": true,
+        "allExtensions": true
+      }
     ]
   ],
   "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        // "decoratorsBeforeExport": true,
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/proposal-object-rest-spread",
     [
       "@babel/plugin-syntax-dynamic-import"
     ],

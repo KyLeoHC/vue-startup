@@ -3,17 +3,26 @@ module.exports = {
   env: {
     browser: true
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
     // vue-eslint-parser uses the parser which is set by parserOptions.parser to parse scripts
-    parser: 'babel-eslint',
+    // parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
   },
+  plugins: [
+    '@typescript-eslint'
+  ],
   extends: [
     // add more generic rulesets here, such as:
     // 'eslint:recommended',
     'standard',
-    'plugin:vue/strongly-recommended'
+    'plugin:vue/strongly-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   globals: {
     // 'build': true
@@ -48,6 +57,8 @@ module.exports = {
     "vue/singleline-html-element-content-newline": 0,
     'vue/no-unused-components': 0,
     'vue/html-self-closing': 0,
+    // typescript-eslint rules
+    '@typescript-eslint/indent': ['error', 2],
     // eslint(check for js) config
     'space-before-function-paren': ['error', {
       'anonymous': 'always',
@@ -66,11 +77,18 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   },
-  'overrides': [
+  overrides: [
     {
-      'files': ['*.vue'],
+      'files': ['*.vue', '*.ts', '*.d.ts'],
       'rules': {
-        'indent': 'off'
+        'indent': 'off',
+        '@typescript-eslint/indent': 'off'
+      }
+    },
+    {
+      'files': ['*.js'],
+      'rules': {
+        '@typescript-eslint/indent': 'off'
       }
     }
   ]
