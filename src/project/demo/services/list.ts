@@ -1,5 +1,4 @@
 import http from '@/common/http';
-import { ServerResponse } from '@/types/http';
 
 interface ListItem {
   id: string;
@@ -22,8 +21,8 @@ const fetchListData = (
     page?: number;
     pageSize?: number;
   }
-): Promise<ListData | ServerResponse> => {
-  return http.get('/list', { params })
+): Promise<ListData> => {
+  return http.get<ListData>('/list', { params })
     .then(response => {
       const data: ListData = response.data;
       // 这里进行数据处理

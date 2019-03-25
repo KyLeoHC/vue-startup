@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import {
   baseUrl
 } from './env';
@@ -8,11 +8,11 @@ const axiosConfig: AxiosRequestConfig = {
   timeout: 20000,
   withCredentials: true
 };
-const http = axios.create(axiosConfig);
+const axiosInstance = axios.create(axiosConfig);
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-http.interceptors.request.use(function (config) {
+axiosInstance.interceptors.request.use(function (config) {
   // config.headers['YourHeaderName'] = 'Your header value';
   return config;
 }, function (error) {
@@ -21,12 +21,12 @@ http.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
-http.interceptors.response.use(function (response) {
+axiosInstance.interceptors.response.use(function (response) {
   // 统一的服务器状态码判断处理
   const SUCCESS_CODE = 200;
   const data = response.data || {};
   if (data.code === SUCCESS_CODE) {
-    return Promise.resolve(data);
+    return data;
   } else {
     return Promise.reject(data);
   }
@@ -34,5 +34,40 @@ http.interceptors.response.use(function (response) {
   // 全局响应异常处理
   return Promise.reject(error);
 });
+
+export interface ServerResponse<T> {
+  code: number;
+  message?: string;
+  data: T;
+}
+
+class Http {
+  private axiosInstance: AxiosInstance;
+
+  public constructor(axiosInstance: AxiosInstance) {
+    this.axiosInstance = axiosInstance;
+  }
+
+  /**
+   * 重新包装axios的get方法，修改其Promise的返回值类型
+   * @param url
+   * @param config
+   */
+  public get<T>(url: string, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
+    return new Promise((resolve, reject) => {
+      axiosInstance.get(url, config)
+        .then(response => {
+          resolve(response as unknown as ServerResponse<T>);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+
+  // 其它post、put、delete等方法，参考get方法的实现即可
+}
+
+const http = new Http(axiosInstance);
 
 export default http;
