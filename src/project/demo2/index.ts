@@ -5,12 +5,9 @@ import {
 } from '@/utils';
 import store from './store';
 import router from './router';
-import pageRouter from '@/common/router';
 import App from './app.vue';
 // import vConsole from 'vconsole';
 // new vConsole();
-
-Vue.prototype.$$router = pageRouter;
 
 // 这里之所以会加多一段Promise.resolve().finally()冗余代码
 // 是因为babel7在面对finally但是没发现Promise关键字的时候
@@ -20,7 +17,9 @@ loadCSSByArray([
   `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
   ...(window.__cssList || [])
 ]).finally(() => {
-  App.store = store;
-  App.router = router;
-  const app = new Vue(App).$mount('#app');
+  new Vue({
+    store,
+    router,
+    render: h => h(App)
+  }).$mount('#app');
 });

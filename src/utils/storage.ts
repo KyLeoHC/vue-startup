@@ -3,10 +3,11 @@
  * @author KyLeo
  */
 
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 const storage = {
   session: {
     _sessionStorage: window.sessionStorage,
-    set(key, value) {
+    set(key: string, value: any): void {
       try {
         const result = JSON.stringify(value);
         if (/^[{[]/.test(result)) {
@@ -21,22 +22,22 @@ const storage = {
         console.warn('[session]:save data fail!');
       }
     },
-    get(key, needConvert) {
+    get(key = '', needConvert: boolean): any {
       let value = this._sessionStorage.getItem(key) || '';
       return needConvert && value
         ? JSON.parse(value)
         : value;
     },
-    remove(key) {
+    remove(key = ''): void {
       this._sessionStorage.removeItem(key);
     },
-    clear() {
+    clear(): void {
       this._sessionStorage.clear();
     }
   },
   local: {
     _localStorage: window.localStorage,
-    set(key, value) {
+    set(key: string, value: any): void {
       try {
         const result = JSON.stringify(value);
         if (/^[{[]/.test(result)) {
@@ -51,16 +52,16 @@ const storage = {
         console.warn('[local]:save data fail!');
       }
     },
-    get(key, needConvert) {
+    get(key = '', needConvert: boolean): any {
       let value = this._localStorage.getItem(key) || '';
       return needConvert && value
         ? JSON.parse(value)
         : value;
     },
-    remove(key) {
+    remove(key = ''): void {
       this._localStorage.removeItem(key);
     },
-    clear() {
+    clear(): void {
       this._localStorage.clear();
     }
   }

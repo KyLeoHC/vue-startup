@@ -27,11 +27,11 @@
     </van-pull-refresh>
   </div>
 </template>
-<script>
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator';
   import { fetchListData } from '../../services/list';
 
-  export default {
-    name: 'List',
+  @Component({
     data() {
       return {
         list: [],
@@ -61,7 +61,7 @@
         }).then(data => {
           this.list = reset ? data.list : this.list.concat(data.list);
           this.finished = this.list.length >= data.total;
-        }).catch(response => {
+        }).catch(() => {
           this.isError = true;
         }).finally(() => {
           this.isRefreshing = false;
@@ -77,6 +77,8 @@
         });
       }
     }
+  })
+  export default class List extends Vue {
   };
 </script>
 <style lang="scss">

@@ -5,12 +5,12 @@
     <div>This is article page</div>
   </div>
 </template>
-<script>
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator';
   import { mapGetters } from 'vuex';
   import Logo from '../../components/logo';
 
-  export default {
-    name: 'Article',
+  @Component({
     computed: {
       ...mapGetters('share', [
         'newContent'
@@ -19,6 +19,8 @@
     components: {
       Logo
     }
+  })
+  export default class Article extends Vue {
   };
 </script>
 <style lang="scss">

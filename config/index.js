@@ -21,7 +21,7 @@ switch (process.env.BUILD_ENV) {
 
 module.exports = Object.assign({
   // 需要编译的入口，如果保持空数组，则默认自动扫描所有入口
-  entryList: ['demo3'],
+  entryList: [],
   // 输出目录
   outputDirectory: 'dist',
   // 资源加载路径

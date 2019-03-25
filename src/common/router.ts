@@ -4,9 +4,38 @@
  */
 import { publicPath } from './env';
 
-const router = {
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+interface RouterOptions {
+  isNewWindow?: boolean;
+  history?: boolean;
+  project?: string;
+  path?: string;
+  query?: {
+    [key: string]: any;
+  };
+}
+
+interface Router {
+  history: boolean;
+
+  generateUrl(options: RouterOptions): string;
+
+  push(options: RouterOptions): void;
+
+  replace(options: RouterOptions): void;
+}
+
+const router: Router = {
   history: true,
-  generateUrl({ history = this.history, project = '', path = '', query = {} }) {
+  generateUrl(
+    this: Router,
+    {
+      history = this.history,
+      project = '',
+      path = '',
+      query = {}
+    }: RouterOptions
+  ): string {
     const queryList = [];
     for (let key in query) {
       queryList.push(`${key}=${encodeURIComponent(query[key])}`);
@@ -15,7 +44,7 @@ const router = {
       ? `//${location.host}${publicPath}${project}${path}?${queryList.join('&')}`
       : `//${location.host}${publicPath}${project}/index.html#${path || '/'}?${queryList.join('&')}`;
   },
-  push(options) {
+  push(options: RouterOptions): void {
     const url = this.generateUrl(options);
     if (options.isNewWindow) {
       window.open(url);
@@ -23,7 +52,7 @@ const router = {
       location.href = url;
     }
   },
-  replace(options) {
+  replace(options: RouterOptions): void {
     location.replace(this.generateUrl(options));
   }
 };

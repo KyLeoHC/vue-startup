@@ -1,17 +1,17 @@
 /*
-  加载css文件函数
+ * 加载css文件函数
  */
+
 const headEl = document.getElementsByTagName('head')[0];
 
 /**
  * 加载单个css文件
  * @param href
  * @param timeLimit 加载时间限制
- * @returns {Promise<any>}
  */
-export function loadCSS(href = '', timeLimit = 3000) {
+export function loadCSS(href = '', timeLimit = 3000): Promise<void> {
   let complete = false;
-  let timeoutId = null;
+  let timeoutId: ReturnType<typeof setTimeout>;
   return new Promise((resolve, reject) => {
     const styleEl = document.createElement('link');
     styleEl.rel = 'stylesheet';
@@ -42,9 +42,8 @@ export function loadCSS(href = '', timeLimit = 3000) {
 /**
  * 同时加载多个css文件
  * @param hrefArray
- * @returns {Promise<any[]>}
  */
-export function loadCSSByArray(hrefArray = []) {
-  const tasks = hrefArray.map(href => loadCSS(href));
+export function loadCSSByArray(hrefArray: string[] = []): Promise<void[]> {
+  const tasks: Promise<void>[] = hrefArray.map(href => loadCSS(href));
   return Promise.all(tasks);
 }

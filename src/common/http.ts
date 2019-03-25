@@ -1,13 +1,14 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import {
   baseUrl
 } from './env';
 
-const http = axios.create({
+const axiosConfig: AxiosRequestConfig = {
   baseURL: baseUrl,
   timeout: 20000,
   withCredentials: true
-});
+};
+const http = axios.create(axiosConfig);
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -25,7 +26,7 @@ http.interceptors.response.use(function (response) {
   const SUCCESS_CODE = 200;
   const data = response.data || {};
   if (data.code === SUCCESS_CODE) {
-    return data;
+    return Promise.resolve(data);
   } else {
     return Promise.reject(data);
   }

@@ -13,17 +13,17 @@ export default new VueRouter({
     {
       name: 'default',
       path: '/',
-      component: () => import(/* webpackChunkName: "demo/list" */ '../views/list')
+      component: () => import(/* webpackChunkName: "demo/list" */ '../views/list/index.vue')
     },
     {
       name: 'list',
       path: '/list',
-      component: () => import(/* webpackChunkName: "demo/list" */ '../views/list')
+      component: () => import(/* webpackChunkName: "demo/list" */ '../views/list/index.vue')
     },
     {
       name: 'detail',
       path: '/detail',
-      component: () => import(/* webpackChunkName: "demo/detail" */ '../views/detail')
+      component: () => import(/* webpackChunkName: "demo/detail" */ '../views/detail/index.vue')
     }
   ]
 });

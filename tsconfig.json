@@ -3,16 +3,21 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "isolatedModules": true,
-    "declarationDir": "dist/types",
-    "declaration": true,
     "target": "esnext",
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
   ],
   "exclude": [
     "node_modules",

@@ -18,7 +18,7 @@
     "build:test": "npm run clean && npm run build:types && cross-env BUILD_ENV=test webpack --config ./build/webpack.config.dist.js",
     "build:pre": "npm run clean && npm run build:types && cross-env BUILD_ENV=pre-production webpack --config ./build/webpack.config.dist.js",
     "build:prod": "npm run clean && npm run build:types && cross-env BUILD_ENV=production webpack --config ./build/webpack.config.dist.js",
-    "lint": "eslint --ext .js,.vue src build",
+    "lint": "eslint --ext .js,.vue,.ts src",
     "stylelint": "stylelint 'src/**/*.{vue,htm,html,css,sss,less,scss,sass}'"
   },
   "repository": {
@@ -109,11 +109,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
+    "src/**/*.{js,vue}": [
       "npm run lint",
       "git add"
     ],
-    "*.{vue,htm,html,css,sss,less,scss,sass}": [
+    "src/**/*.{vue,htm,html,css,sss,less,scss,sass}": [
       "npm run stylelint",
       "git add"
     ]

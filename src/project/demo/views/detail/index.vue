@@ -16,9 +16,11 @@
     </a>
   </div>
 </template>
-<script>
-  export default {
-    name: 'Detail',
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator';
+  import router from '@/common/router';
+
+  @Component({
     data() {
       return {};
     },
@@ -27,7 +29,7 @@
         history.go(-1);
       },
       linkToDemo2() {
-        this.$$router.push({
+        router.push({
           project: 'demo2',
           query: {
             from: 'demo'
@@ -35,6 +37,8 @@
         });
       }
     }
+  })
+  export default class Detail extends Vue {
   };
 </script>
 <style lang="scss">

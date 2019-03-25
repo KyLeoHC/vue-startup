@@ -1,11 +1,11 @@
 <template>
   <div class="logo" @click="onClickLogo"></div>
 </template>
-<script>
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator';
   import { mapActions } from 'vuex';
 
-  export default {
-    name: 'Logo',
+  @Component({
     methods: {
       ...mapActions('share', [
         'sendMessage'
@@ -14,6 +14,8 @@
         this.sendMessage('clickLogo');
       }
     }
+  })
+  export default class Logo extends Vue {
   };
 </script>
 <style lang="scss">

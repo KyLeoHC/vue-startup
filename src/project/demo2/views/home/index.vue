@@ -11,17 +11,18 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
+  import { Vue, Component } from 'vue-property-decorator';
   import Logo from '../../components/logo';
+  import router from '@/common/router';
 
-  export default {
-    name: 'Home',
+  @Component({
     components: {
       Logo
     },
     methods: {
       linkToDemo() {
-        this.$$router.push({
+        router.push({
           project: 'demo',
           path: '/list',
           query: {
@@ -30,6 +31,8 @@
         });
       }
     }
+  })
+  export default class Home extends Vue {
   };
 </script>
 <style lang="scss">
