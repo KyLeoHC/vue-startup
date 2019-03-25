@@ -42,6 +42,12 @@ npm run build:prod
 # 构建打包完成后展示模块分析结果
 npm run build:prod --report
 
+# 运行ts的类型检查
+npm run type-check
+
+# 运行ts的类型检查并且监控文件变化
+npm run type-check:watch
+
 # 检查JS或者html模板代码格式
 npm run lint
 
@@ -70,7 +76,7 @@ npm run stylelint -- --fix
 │   ├── config.pre.js: 预生产环境的配置文件
 │   ├── config.production.js: 生产环境的配置文件
 │   ├── config.test.js: 测试环境的配置文件
-│   └── index.ts: 基础配置文件
+│   └── index.js: 基础配置文件
 ├── docs: 项目其它说明文档目录
 ├── src: 项目源码目录
 │   ├── common: 项目全局通用代码目录(此目录下的通用代码是和本项目的业务息息相关的)
