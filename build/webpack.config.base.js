@@ -35,7 +35,7 @@ const baseConfig = {
         include: [path.resolve(__dirname, '../src')],
         exclude: [/node_modules/],
         options: {
-          formatter: require('eslint-friendly-formatter')
+          formatter: require('eslint-formatter-friendly')
         }
       },
       {

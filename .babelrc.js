@@ -5,7 +5,10 @@ module.exports = {
       {
         // "debug": true,
         "modules": false,
-        "useBuiltIns": "usage"
+        "useBuiltIns": "usage",
+        "corejs": {
+          "version": "3"
+        }
       }
     ]
   ],
