@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+  import router from '@/common/router';
   import Logo from '../../components/logo';
 
   export default {
@@ -21,7 +22,7 @@
     },
     methods: {
       linkToDemo() {
-        this.$$router.push({
+        router.push({
           project: 'demo',
           path: '/list',
           query: {

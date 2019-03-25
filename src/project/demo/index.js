@@ -4,7 +4,6 @@ import {
   loadCSSByArray
 } from '@/utils';
 import router from './router';
-import pageRouter from '@/common/router';
 import App from './app.vue';
 import {
   List,
@@ -13,8 +12,6 @@ import {
 } from 'vant';
 // import vConsole from 'vconsole';
 // new vConsole();
-
-Vue.prototype.$$router = pageRouter;
 
 Vue.use(List)
   .use(NavBar)

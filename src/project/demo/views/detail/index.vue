@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+  import router from '@/common/router';
+
   export default {
     name: 'Detail',
     data() {
@@ -27,7 +29,7 @@
         history.go(-1);
       },
       linkToDemo2() {
-        this.$$router.push({
+        router.push({
           project: 'demo2',
           query: {
             from: 'demo'
