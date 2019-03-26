@@ -42,7 +42,7 @@ axiosInstance.interceptors.response.use(function (response) {
 export interface ServerResponse<T> {
   code: number;
   message?: string;
-  data: T;
+  data?: T;
 }
 
 class Http {
