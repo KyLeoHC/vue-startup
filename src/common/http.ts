@@ -40,12 +40,19 @@ axiosInstance.interceptors.response.use(function (response) {
  * 服务端返回的响应数据整体结构
  */
 export interface ServerResponse<T> {
+  /** 服务端响应状态 */
   code: number;
+  /** 发生异常时返回的额外文本信息 */
   message?: string;
+  /** 正常调用返回的数据 */
   data?: T;
 }
 
+/**
+ * 基于axios实例重新封装的Http请求类
+ */
 class Http {
+  /** axios实例 */
   private axiosInstance: AxiosInstance;
 
   public constructor(axiosInstance: AxiosInstance) {

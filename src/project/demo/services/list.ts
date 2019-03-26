@@ -4,9 +4,13 @@ import http from '@/common/http';
  * 列表项数据结构
  */
 interface ListItem {
+  /** id */
   id: string;
+  /** 名字 */
   name: string;
+  /** 电子邮箱 */
   email: string;
+  /** 处理时间 */
   time?: number;
 }
 
@@ -14,7 +18,9 @@ interface ListItem {
  * 列表数据结构
  */
 class ListData {
+  /** 数组列表 */
   public list: ListItem[] | null = [];
+  /** 总数 */
   public total: number = 0;
 }
 
