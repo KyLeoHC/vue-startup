@@ -14,7 +14,7 @@ interface ListItem {
  * 列表数据结构
  */
 class ListData {
-  public list: ListItem[] = [];
+  public list: ListItem[] | null = [];
   public total: number = 0;
 }
 
@@ -32,6 +32,7 @@ const fetchListData = (
     .then(response => {
       const data: ListData = response.data || new ListData();
       // 这里进行数据处理
+      data.list = data.list || [];
       data.list.forEach((item: ListItem) => {
         item.time = new Date().getTime();
       });
