@@ -35,6 +35,9 @@ axiosInstance.interceptors.response.use(function (response) {
   return Promise.reject(error);
 });
 
+/**
+ * 服务端返回的响应数据整体结构
+ */
 export interface ServerResponse<T> {
   code: number;
   message?: string;
@@ -57,6 +60,8 @@ class Http {
     return new Promise((resolve, reject) => {
       axiosInstance.get(url, config)
         .then(response => {
+          // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
+          // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
           resolve(response as unknown as ServerResponse<T>);
         })
         .catch(error => {
@@ -65,7 +70,27 @@ class Http {
     });
   }
 
-  // 其它post、put、delete等方法，参考get方法的实现即可
+  /**
+   * 重新包装axios的post方法，修改其Promise的返回值类型
+   * @param url
+   * @param data
+   * @param config
+   */
+  public post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
+    return new Promise((resolve, reject) => {
+      axiosInstance.post(url, data, config)
+        .then(response => {
+          // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
+          // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
+          resolve(response as unknown as ServerResponse<T>);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+
+  // 其它put、delete、request等方法，参考get、post方法的实现以及axios的d.ts描述文件即可
 }
 
 const http = new Http(axiosInstance);

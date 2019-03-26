@@ -1,5 +1,8 @@
 import http from '@/common/http';
 
+/**
+ * 列表项数据结构
+ */
 interface ListItem {
   id: string;
   name: string;
@@ -7,6 +10,9 @@ interface ListItem {
   time?: number;
 }
 
+/**
+ * 列表数据结构
+ */
 interface ListData {
   list: ListItem[];
   total: number;
