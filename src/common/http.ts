@@ -35,6 +35,7 @@ axiosInstance.interceptors.response.use(function (response) {
   return Promise.reject(error);
 });
 
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 /**
  * 服务端返回的响应数据整体结构
  */
@@ -58,7 +59,7 @@ class Http {
    */
   public get<T>(url: string, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
     return new Promise((resolve, reject) => {
-      axiosInstance.get(url, config)
+      this.axiosInstance.get(url, config)
         .then(response => {
           // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
           // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
@@ -78,7 +79,7 @@ class Http {
    */
   public post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
     return new Promise((resolve, reject) => {
-      axiosInstance.post(url, data, config)
+      this.axiosInstance.post(url, data, config)
         .then(response => {
           // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
           // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
