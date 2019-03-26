@@ -14,8 +14,8 @@ interface ListItem {
  * 列表数据结构
  */
 class ListData {
-  list: ListItem[] = [];
-  total: number = 0;
+  public list: ListItem[] = [];
+  public total: number = 0;
 }
 
 /**
