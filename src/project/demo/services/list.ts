@@ -38,7 +38,6 @@ const fetchListData = (
       return data;
     })
     .catch(response => {
-      console.log(response);
       return Promise.reject(response);
     });
 };
