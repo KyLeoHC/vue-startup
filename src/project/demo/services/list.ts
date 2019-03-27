@@ -3,7 +3,7 @@ import http from '@/common/http';
 /**
  * 列表项数据结构
  */
-interface ListItem {
+export interface ListItem {
   /** id */
   id: string;
   /** 名字 */
@@ -17,7 +17,7 @@ interface ListItem {
 /**
  * 列表数据结构
  */
-class ListData {
+export class ListData {
   /** 数组列表 */
   public list: ListItem[] | null = [];
   /** 总数 */

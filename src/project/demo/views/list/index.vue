@@ -29,56 +29,62 @@
 </template>
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
-  import { fetchListData } from '../../services/list';
+  import {
+    ListItem,
+    fetchListData
+  } from '../../services/list';
 
-  @Component({
-    data() {
-      return {
-        list: [],
-        page: 0,
-        pageSize: 20,
-        isError: false,
-        isRefreshing: false,
-        isLoadingMore: false,
-        finished: false
-      };
-    },
-    methods: {
-      onClickLeft() {
-        history.go(-1);
-      },
-      onRefresh() {
-        this.loadData(true);
-      },
-      onLoad() {
-        this.loadData();
-      },
-      loadData(reset = false) {
-        this.page = reset ? 0 : this.page;
-        fetchListData({
-          page: ++this.page,
-          pageSize: this.pageSize
-        }).then(data => {
-          this.list = reset ? data.list : this.list.concat(data.list);
-          this.finished = this.list.length >= data.total;
-        }).catch(() => {
-          this.isError = true;
-        }).finally(() => {
-          this.isRefreshing = false;
-          this.isLoadingMore = false;
-        });
-      },
-      linkToDetail(item) {
-        this.$router.push({
-          name: 'detail',
-          query: {
-            ...item
-          }
-        });
-      }
-    }
-  })
+  @Component
   export default class List extends Vue {
+    list: ListItem[] = [];
+    page: number = 0;
+    pageSize: number = 20;
+    isError: boolean = false;
+    isRefreshing: boolean = false;
+    isLoadingMore: boolean = false;
+    finished: boolean = false;
+
+    onClickLeft() {
+      history.go(-1);
+    }
+
+    onRefresh() {
+      this.loadData(true);
+    }
+
+    onLoad() {
+      this.loadData();
+    }
+
+    loadData(reset = false) {
+      this.page = reset ? 0 : this.page;
+      fetchListData({
+        page: ++this.page,
+        pageSize: this.pageSize
+      }).then(data => {
+        if (data.list) {
+          this.list = reset ? data.list : this.list.concat(data.list);
+        }
+        this.finished = this.list.length >= data.total;
+      }).catch(() => {
+        this.isError = true;
+      }).finally(() => {
+        this.isRefreshing = false;
+        this.isLoadingMore = false;
+      });
+    }
+
+    linkToDetail(item: ListItem) {
+      this.$router.push({
+        name: 'detail',
+        query: {
+          id: item.id,
+          name: item.name,
+          email: item.email,
+          time: (item.time || '') + ''
+        }
+      });
+    }
   };
 </script>
 <style lang="scss">

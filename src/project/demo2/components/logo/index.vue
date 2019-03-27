@@ -3,19 +3,18 @@
 </template>
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
-  import { mapActions } from 'vuex';
+  import { namespace } from 'vuex-class';
 
-  @Component({
-    methods: {
-      ...mapActions('share', [
-        'sendMessage'
-      ]),
-      onClickLogo() {
-        this.sendMessage('clickLogo');
-      }
-    }
-  })
+  const share = namespace('share');
+
+  @Component
   export default class Logo extends Vue {
+    /* eslint @typescript-eslint/no-explicit-any: 0 */
+    @share.Action('sendMessage') sendMessage: any;
+
+    onClickLogo() {
+      this.sendMessage('clickLogo');
+    }
   };
 </script>
 <style lang="scss">

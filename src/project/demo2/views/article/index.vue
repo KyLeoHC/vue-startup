@@ -8,7 +8,7 @@
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
   import { mapGetters } from 'vuex';
-  import Logo from '../../components/logo';
+  import Logo from '../../components/logo/index.vue';
 
   @Component({
     computed: {
