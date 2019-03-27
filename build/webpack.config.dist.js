@@ -44,6 +44,9 @@ baseConfig.optimization = {
     new UglifyJsPlugin({
       parallel: true,
       uglifyOptions: {
+        compress: {
+          drop_console: true
+        },
         output: {
           comments: false,
           beautify: false
