@@ -1,11 +1,12 @@
-/**
- * Flexible插件
+/*
+ * Flexible插件(设计稿基准值是750px宽度)
  * 1.px转实际像素值大小
  * 2.px转rem
  * 3.半像素border
  * 4.多分辨率图片url
- * by KyLeo 2018.08.01
+ * @author KyLeo 2018.08.01
  */
+
 const css = require('css');
 const pxRegExp = /\b(\d+(\.\d+)?)px\b/;
 const defaultConfig = {
