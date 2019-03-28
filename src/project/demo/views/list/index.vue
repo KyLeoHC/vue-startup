@@ -62,9 +62,7 @@
         page: ++this.page,
         pageSize: this.pageSize
       }).then(data => {
-        if (data.list) {
-          this.list = reset ? data.list : this.list.concat(data.list);
-        }
+        this.list = reset ? data.list : this.list.concat(data.list);
         this.finished = this.list.length >= data.total;
       }).catch(() => {
         this.isError = true;

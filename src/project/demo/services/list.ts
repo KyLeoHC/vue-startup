@@ -3,15 +3,28 @@ import http from '@/common/http';
 /**
  * 列表项数据结构
  */
-export interface ListItem {
+export class ListItem {
   /** id */
-  id: string;
+  public id: string = '';
   /** 名字 */
-  name: string;
+  public name: string = '';
   /** 电子邮箱 */
-  email: string;
+  public email: string = '';
   /** 处理时间 */
-  time?: number;
+  public time?: number;
+
+  public constructor(item: ListItem | null | undefined) {
+    if (item) {
+      // 运行时的数据容错处理
+      this.id = item.id || '';
+      this.name = item.name || '';
+      this.email = item.email || '';
+
+      if (item.time) {
+        this.time = item.time;
+      }
+    }
+  }
 }
 
 /**
@@ -19,9 +32,20 @@ export interface ListItem {
  */
 export class ListData {
   /** 数组列表 */
-  public list: ListItem[] | null = [];
+  public list: ListItem[] = [];
   /** 总数 */
   public total: number = 0;
+
+  public constructor(data: ListData | null | undefined) {
+    if (data) {
+      // 运行时的数据容错处理
+      this.list = data.list && data.list.length ? data.list : [];
+      this.list = this.list.map((item) => {
+        return new ListItem(item);
+      });
+      this.total = data.total || 0;
+    }
+  }
 }
 
 /**
@@ -36,9 +60,8 @@ const fetchListData = (
 ): Promise<ListData> => {
   return http.get<ListData>('/list', { params })
     .then(response => {
-      const data: ListData = response.data || new ListData();
+      const data: ListData = new ListData(response.data);
       // 这里进行数据处理
-      data.list = data.list || [];
       data.list.forEach((item: ListItem) => {
         item.time = new Date().getTime();
       });
