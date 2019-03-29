@@ -3,6 +3,12 @@ import {
   baseUrl
 } from './env';
 
+// 由于babel7的支持问题，这里暂时不能使用const enum特性，需要等待babel的日后支持
+export enum ServerResponseCode {
+  /** 正常响应 */
+  Success = 200
+}
+
 const axiosConfig: AxiosRequestConfig = {
   baseURL: baseUrl,
   timeout: 20000,
@@ -22,10 +28,9 @@ axiosInstance.interceptors.request.use(function (config) {
 });
 
 axiosInstance.interceptors.response.use(function (response) {
-  // 统一的服务器状态码判断处理
-  const SUCCESS_CODE = 200;
   const data = response.data || {};
-  if (data.code === SUCCESS_CODE) {
+  // 统一的服务器状态码判断处理
+  if (data.code === ServerResponseCode.Success) {
     return data;
   } else {
     return Promise.reject(data);
