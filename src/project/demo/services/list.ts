@@ -75,6 +75,7 @@ const fetchListData = (
       return data;
     })
     .catch(response => {
+      // 这里如果没有需要特殊处理异常的话，可以省去这个catch代码
       return Promise.reject(response);
     });
 };

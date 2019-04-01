@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, Canceler } from 'axios';
 import {
   baseUrl
 } from './env';
@@ -9,6 +9,8 @@ export enum ServerResponseCode {
   Success = 200
 }
 
+const isCancel = axios.isCancel;
+const CancelToken = axios.CancelToken;
 const axiosConfig: AxiosRequestConfig = {
   baseURL: baseUrl,
   timeout: 20000,
@@ -19,6 +21,7 @@ const axiosInstance = axios.create(axiosConfig);
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 axiosInstance.interceptors.request.use(function (config) {
+  // 发送请求前的一些前置处理
   // config.headers['YourHeaderName'] = 'Your header value';
   return config;
 }, function (error) {
@@ -37,6 +40,9 @@ axiosInstance.interceptors.response.use(function (response) {
   }
 }, function (error) {
   // 全局响应异常处理
+  if (isCancel(error)) {
+    console.log('Request canceled:', error);
+  }
   return Promise.reject(error);
 });
 
@@ -58,10 +64,43 @@ export interface ServerResponse<T> {
  */
 class Http {
   /** axios实例 */
-  private axiosInstance: AxiosInstance;
+  private _axiosInstance: AxiosInstance;
+  private _cancelerMap: Map<string, Canceler> = new Map<string, Canceler>();
 
   public constructor(axiosInstance: AxiosInstance) {
-    this.axiosInstance = axiosInstance;
+    this._axiosInstance = axiosInstance;
+  }
+
+  /**
+   * 处理cancelToken的配置，检测和终止上一个未完成的请求
+   * @param url
+   * @param config
+   * @private
+   */
+  private _processCancelTokenConfig(url: string, config: AxiosRequestConfig = {}): AxiosRequestConfig {
+    const cancelerMap = this._cancelerMap;
+    const canceler = cancelerMap.get(url);
+    if (canceler) {
+      // 如果上一个请求尚未完成，则取消上一个请求先
+      cancelerMap.delete(url);
+      canceler('cancel previous request');
+    }
+    if (!config.cancelToken) {
+      // 默认同一个请求只能同时存在一个
+      // 后续发起的请求会终止上一个请求
+      config.cancelToken = new CancelToken(function (canceler) {
+        cancelerMap.set(url, canceler);
+      });
+    }
+    return config;
+  }
+
+  /**
+   * 检查指定的请求是否正在发送，尚未完成
+   * @param url
+   */
+  public checkRequestSending(url: string = ''): boolean {
+    return this._cancelerMap.has(url);
   }
 
   /**
@@ -70,15 +109,23 @@ class Http {
    * @param config
    */
   public get<T>(url: string, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
+    config = this._processCancelTokenConfig(url, config);
     return new Promise((resolve, reject) => {
-      this.axiosInstance.get(url, config)
+      this._axiosInstance.get(url, config)
         .then(response => {
           // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
           // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
           resolve(response as unknown as ServerResponse<T>);
         })
         .catch(error => {
-          reject(error);
+          if (!isCancel(error)) {
+            // 非取消请求的异常不会reject
+            reject(error);
+          }
+        })
+        .finally(() => {
+          // 请求结束，移除对应请求url的canceler
+          this._cancelerMap.delete(url);
         });
     });
   }
@@ -90,15 +137,19 @@ class Http {
    * @param config
    */
   public post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
+    config = this._processCancelTokenConfig(url, config);
     return new Promise((resolve, reject) => {
-      this.axiosInstance.post(url, data, config)
+      this._axiosInstance.post(url, data, config)
         .then(response => {
-          // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
-          // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
           resolve(response as unknown as ServerResponse<T>);
         })
         .catch(error => {
-          reject(error);
+          if (!isCancel(error)) {
+            reject(error);
+          }
+        })
+        .finally(() => {
+          this._cancelerMap.delete(url);
         });
     });
   }
@@ -108,4 +159,7 @@ class Http {
 
 const http = new Http(axiosInstance);
 
+export {
+  isCancel
+};
 export default http;
