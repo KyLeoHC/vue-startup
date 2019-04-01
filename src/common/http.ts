@@ -119,7 +119,7 @@ class Http {
         })
         .catch(error => {
           if (!isCancel(error)) {
-            // 非取消请求的异常不会reject
+            // 取消请求的异常不会reject
             reject(error);
           }
         })
