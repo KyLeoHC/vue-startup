@@ -47,7 +47,7 @@ export class ListData {
     if (data) {
       // 运行时的数据容错处理
       this.list = data.list && data.list.length ? data.list : [];
-      this.list = this.list.map((item) => {
+      this.list = this.list.map((item: ListItem): ListItem => {
         return new ListItem(item);
       });
       this.total = data.total || 0;
@@ -65,19 +65,21 @@ const fetchListData = (
     pageSize?: number;
   }
 ): Promise<ListData> => {
-  return http.get<ListData>('/list', { params })
-    .then(response => {
-      const data: ListData = new ListData(response.data);
-      // 这里进行数据处理
-      data.list.forEach((item: ListItem) => {
-        item.time = new Date().getTime();
+  return new Promise<ListData>((resolve, reject): void => {
+    http.get<ListData>('/list', { params })
+      .then((response): void => {
+        const data: ListData = new ListData(response.data);
+        // 这里进行数据处理
+        data.list.forEach((item: ListItem): void => {
+          item.time = new Date().getTime();
+        });
+        resolve(data);
+      })
+      .catch((response): void => {
+        // 这里如果没有需要特殊处理异常的话，可以省去这个catch代码
+        reject(response);
       });
-      return data;
-    })
-    .catch(response => {
-      // 这里如果没有需要特殊处理异常的话，可以省去这个catch代码
-      return Promise.reject(response);
-    });
+  });
 };
 
 export {

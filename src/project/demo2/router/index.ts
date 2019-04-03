@@ -7,6 +7,7 @@ const project = 'demo2';
 
 Vue.use(VueRouter);
 
+/* eslint @typescript-eslint/explicit-function-return-type: 0 */
 export default new VueRouter({
   mode: 'history',
   base: `${publicPath}${project}`,

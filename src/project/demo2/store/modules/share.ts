@@ -14,22 +14,22 @@ const state: State = {
 };
 
 const getters = {
-  getCount(state: State) {
+  getCount(state: State): number {
     return state.count;
   },
-  newContent(state: State) {
+  newContent(state: State): string {
     return `${state.content}/${state.message}`;
   }
 };
 
 const actions: ActionTree<State, State> = {
-  sendMessage({ commit, state, getters }, msg: string) {
+  sendMessage({ commit, state, getters }, msg: string): void {
     commit('writeMessage', `${msg}:${getters.getCount}`);
   }
 };
 
 const mutations: MutationTree<State> = {
-  writeMessage(state: State, msg: string) {
+  writeMessage(state: State, msg: string): void {
     state.message = msg;
   }
 };

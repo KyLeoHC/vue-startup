@@ -1,5 +1,5 @@
 /* eslint no-unused-vars: 0 */
-import Vue from 'vue';
+import Vue, { VNode } from 'vue';
 import {
   loadCSSByArray
 } from '@/utils';
@@ -24,9 +24,9 @@ Promise.resolve().finally();
 loadCSSByArray([
   `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
   ...(window.__cssList || [])
-]).finally(() => {
+]).finally((): void => {
   new Vue({
     router,
-    render: h => h(App)
+    render: (h): VNode => h(App)
   }).$mount('#app');
 });
