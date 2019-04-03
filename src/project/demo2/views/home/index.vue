@@ -5,8 +5,11 @@
       <a href="javascript:;" @click="linkToDemo">
         跳转到demo
       </a>
-      <a href="javascript:;" @click="$router.push({name: 'article'})">
-        跳转到article页面
+      <a href="javascript:;" @click="$router.push({name: 'vuexTest'})">
+        跳转到vuexTest
+      </a>
+      <a href="javascript:;" @click="$router.push({name: 'drag'})">
+        跳转到drag
       </a>
     </div>
   </div>

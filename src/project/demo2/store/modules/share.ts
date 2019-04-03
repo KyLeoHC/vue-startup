@@ -6,10 +6,9 @@ interface State {
   message: string;
 }
 
-/* eslint @typescript-eslint/no-unused-vars: 0 */
 const state: State = {
-  count: 0,
-  content: 'vuex share content',
+  count: -1,
+  content: 'vuex test',
   message: ''
 };
 
@@ -18,18 +17,22 @@ const getters = {
     return state.count;
   },
   newContent(state: State): string {
-    return `${state.content}/${state.message}`;
+    return `${state.content}/${state.message || ' -- '}`;
   }
 };
 
 const actions: ActionTree<State, State> = {
-  sendMessage({ commit, state, getters }, msg: string): void {
-    commit('writeMessage', `${msg}:${getters.getCount}`);
+  sendClickEvent({ commit, getters }, msg: string): void {
+    commit('addCount');
+    commit('setMessage', `${msg}:${getters.getCount}`);
   }
 };
 
 const mutations: MutationTree<State> = {
-  writeMessage(state: State, msg: string): void {
+  addCount(state: State): void {
+    state.count++;
+  },
+  setMessage(state: State, msg: string): void {
     state.message = msg;
   }
 };

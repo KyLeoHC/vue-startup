@@ -10,10 +10,10 @@
   @Component
   export default class Logo extends Vue {
     /* eslint @typescript-eslint/no-explicit-any: 0 */
-    @share.Action('sendMessage') sendMessage: any;
+    @share.Action('sendClickEvent') sendClickEvent: any;
 
     onClickLogo() {
-      this.sendMessage('clickLogo');
+      this.sendClickEvent('clickLogo');
     }
   };
 </script>

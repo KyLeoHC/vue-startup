@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 import axios, { AxiosInstance, AxiosRequestConfig, Canceler } from 'axios';
 import {
   baseUrl
@@ -46,7 +47,6 @@ axiosInstance.interceptors.response.use(function (response): any {
   return Promise.reject(error);
 });
 
-/* eslint @typescript-eslint/no-explicit-any: 0 */
 /**
  * 服务端返回的响应数据整体结构
  */

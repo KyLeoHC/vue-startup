@@ -18,9 +18,14 @@ export default new VueRouter({
       component: Home
     },
     {
-      name: 'article',
-      path: '/article',
-      component: () => import(/* webpackChunkName: "demo2/article" */ '../views/article/index.vue')
+      name: 'vuexTest',
+      path: '/vuexTest',
+      component: () => import(/* webpackChunkName: "demo2/vuexTest" */ '../views/vuexTest/index.vue')
+    },
+    {
+      name: 'drag',
+      path: '/drag',
+      component: () => import(/* webpackChunkName: "demo2/drag" */ '../views/drag/index.vue')
     }
   ]
 });
