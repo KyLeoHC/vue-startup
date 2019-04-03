@@ -8,10 +8,10 @@
     name: 'Logo',
     methods: {
       ...mapActions('share', [
-        'sendMessage'
+        'sendClickEvent'
       ]),
       onClickLogo() {
-        this.sendMessage('clickLogo');
+        this.sendClickEvent('clickLogo');
       }
     }
   };

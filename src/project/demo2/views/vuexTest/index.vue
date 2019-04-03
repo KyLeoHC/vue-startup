@@ -1,16 +1,18 @@
 <template>
-  <div class="article-container">
+  <div class="vuex-test-container">
     <logo/>
     <div>{{ newContent }}</div>
-    <div>This is article page</div>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import {
+    mapGetters,
+    mapActions
+  } from 'vuex';
   import Logo from '../../components/logo';
 
   export default {
-    name: 'Article',
+    name: 'VuexTest',
     computed: {
       ...mapGetters('share', [
         'newContent'
@@ -18,13 +20,21 @@
     },
     components: {
       Logo
+    },
+    methods: {
+      ...mapActions('share', [
+        'sendClickEvent'
+      ])
+    },
+    mounted() {
+      this.sendClickEvent('clickLogo');
     }
   };
 </script>
 <style lang="scss">
   @import "~styles/common";
 
-  .article-container {
+  .vuex-test-container {
     font-size: 18px;
     text-align: center;
   }

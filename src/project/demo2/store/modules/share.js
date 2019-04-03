@@ -1,6 +1,6 @@
 const state = {
-  count: 0,
-  content: 'vuex share content',
+  count: -1,
+  content: 'vuex test',
   message: ''
 };
 
@@ -9,18 +9,22 @@ const getters = {
     return state.count;
   },
   newContent(state, getters) {
-    return `${state.content}/${state.message}`;
+    return `${state.content}/${state.message || ' -- '}`;
   }
 };
 
 const actions = {
-  sendMessage({ commit, state, getters }, msg) {
-    commit('writeMessage', `${msg}:${getters.getCount}`);
+  sendClickEvent({ commit, state, getters }, msg) {
+    commit('addCount');
+    commit('setMessage', `${msg}:${getters.getCount}`);
   }
 };
 
 const mutations = {
-  writeMessage(state, msg) {
+  addCount(state) {
+    state.count++;
+  },
+  setMessage(state, msg) {
     state.message = msg;
   }
 };
