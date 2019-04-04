@@ -16,31 +16,7 @@
     </a>
   </div>
 </template>
-<script lang="ts">
-  import { Vue, Component } from 'vue-property-decorator';
-  import router from '@/common/router';
-
-  @Component({
-    data() {
-      return {};
-    },
-    methods: {
-      onClickLeft() {
-        history.go(-1);
-      },
-      linkToDemo2() {
-        router.push({
-          project: 'demo2',
-          query: {
-            from: 'demo'
-          }
-        });
-      }
-    }
-  })
-  export default class Detail extends Vue {
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   @import "~styles/common";
 

@@ -1,23 +1,7 @@
 <template>
   <div class="logo" @click="onClickLogo"></div>
 </template>
-<script lang="ts">
-  import { Vue, Component } from 'vue-property-decorator';
-  import { namespace } from 'vuex-class';
-
-  const share = namespace('share');
-
-  @Component
-  export default class Logo extends Vue {
-    /* eslint @typescript-eslint/no-explicit-any: 0 */
-    @share.Action('sendClickEvent')
-    sendClickEvent: any;
-
-    onClickLogo() {
-      this.sendClickEvent('clickLogo');
-    }
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   .logo {
     $w: 200px;

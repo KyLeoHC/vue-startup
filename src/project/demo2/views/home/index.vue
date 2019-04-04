@@ -14,30 +14,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-  import { Vue, Component } from 'vue-property-decorator';
-  import Logo from '../../components/logo/index.vue';
-  import router from '@/common/router';
-
-  @Component({
-    components: {
-      Logo
-    },
-    methods: {
-      linkToDemo() {
-        router.push({
-          project: 'demo',
-          path: '/list',
-          query: {
-            from: 'demo2'
-          }
-        });
-      }
-    }
-  })
-  export default class Home extends Vue {
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   @import "~styles/common";
 
