@@ -2,6 +2,14 @@
   <div class="drag-container">
     <div class="list-operation-group">
       <button type="button"
+              @click="onClickAdd">
+        add item
+      </button>
+      <button type="button"
+              @click="onClickDelete">
+        delete item
+      </button>
+      <button type="button"
               @click="onClickShuffleBtn">
         shuffle
       </button>
@@ -31,21 +39,21 @@
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
 
-  interface ListItem {
-    id: number;
-    text: string;
-    isDragging: boolean;
-    isDragEnter: boolean;
+  class ListItem {
+    static uid = 0;
+    public id: number = 0;
+    public text: string = 'item';
+    public isDragging: boolean = false;
+    public isDragEnter: boolean = false;
+
+    constructor() {
+      this.id = ListItem.uid++;
+    }
   }
 
   const list: ListItem[] = [];
   for (let i = 0; i < 20; i++) {
-    list.push({
-      id: i,
-      text: `list-item`,
-      isDragging: false,
-      isDragEnter: false
-    });
+    list.push(new ListItem());
   }
 
   let dragIndex = 0;
@@ -61,6 +69,10 @@
   export default class Drag extends Vue {
     list: ListItem[] = list;
     intervalId: ReturnType<typeof setInterval> | null = null;
+
+    getRandomIndex(): number {
+      return Math.floor(Math.random() * this.list.length);
+    }
 
     onDragStart(item: ListItem, index: number) {
       dragIndex = index;
@@ -91,11 +103,19 @@
       item.isDragEnter = false;
     }
 
+    onClickAdd() {
+      this.list.splice(this.getRandomIndex(), 0, new ListItem());
+    }
+
+    onClickDelete() {
+      this.list.splice(this.getRandomIndex(), 1);
+    }
+
     onClickShuffleBtn() {
       const newList: ListItem[] = [];
       const length = this.list.length;
       this.list.forEach(item => {
-        let randomIndex = Math.floor(Math.random() * length);
+        let randomIndex = this.getRandomIndex();
         let exist = false;
         do {
           if (newList[randomIndex] === undefined) {
@@ -128,10 +148,20 @@
   .drag-container {
     padding-top: 20px;
     font-size: 18px;
+    text-align: center;
 
     .list-operation-group {
       margin-bottom: 20px;
-      text-align: center;
+    }
+
+    .shuffle-list-enter, .shuffle-list-leave-to {
+      opacity: 0;
+      transform: scale(0);
+      will-change: opacity, transform;
+    }
+
+    .shuffle-list-leave-active {
+      position: absolute;
     }
 
     .shuffle-list-move {
@@ -139,18 +169,20 @@
     }
 
     ul {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 60%;
+      display: inline-block;
+      width: 416px;
       margin: 0 auto;
+      text-align: left;
 
       li {
-        flex: 1 0 46%;
+        display: inline-block;
+        width: 100px;
         padding: 6px 10px;
         margin: 2px;
         border: 1px solid #666;
+        transition: all .5s;
         text-align: center;
+        white-space: nowrap;
         overflow: hidden;
 
         &.item--drag div {
