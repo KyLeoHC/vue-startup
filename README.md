@@ -91,6 +91,7 @@ npm run stylelint -- --fix
 │   ├── project: 项目主功能业务模块目录(可放置多个子项目，实现多页应用)
 │   │   ├── demo: 子项目目录
 │   │   │   ├── app.vue: 入口组件
+│   │   │   ├── app.ts: 入口组件的script部分ts代码
 │   │   │   ├── index.html: 入口html模板
 │   │   │   ├── index.ts: 入口启动文件
 │   │   │   ├── components: 当前子项目内公用的组件，如果其它子项目也可用，请把目标组件转移到全局组件目录
