@@ -40,7 +40,7 @@ module.exports = {
       'singleline': 'error',
       'multiline': 'never'
     }],
-    "vue/singleline-html-element-content-newline": 0,
+    'vue/singleline-html-element-content-newline': 0,
     'vue/no-unused-components': 0,
     'vue/html-self-closing': 0,
     // js rules
