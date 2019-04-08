@@ -20,6 +20,11 @@ export default new VueRouter({
       name: 'vuexTest',
       path: '/vuexTest',
       component: () => import(/* webpackChunkName: "demo2/vuexTest" */ '../views/vuexTest')
+    },
+    {
+      name: 'drag',
+      path: '/drag',
+      component: () => import(/* webpackChunkName: "demo2/drag" */ '../views/drag')
     }
   ]
 });
