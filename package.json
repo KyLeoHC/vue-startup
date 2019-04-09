@@ -1,11 +1,6 @@
 {
   "name": "vue-startup",
   "version": "0.0.1",
-  "description": "A project template with vue",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "precommit": "lint-staged",
     "postcommit": "git update-index --again",
@@ -18,16 +13,6 @@
     "lint": "eslint --ext .js,.vue src build",
     "stylelint": "stylelint 'src/**/*.{vue,htm,html,css,sss,less,scss,sass}'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KyLeoHC/vue-startup.git"
-  },
-  "author": "KyLeo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/KyLeoHC/vue-startup/issues"
-  },
-  "homepage": "https://github.com/KyLeoHC/vue-startup#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
