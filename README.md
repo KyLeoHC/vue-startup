@@ -1,7 +1,7 @@
 # vue-startup
 
 一个基于vue的示例项目，既是一个单页应用，也是一个多页应用。与此同时，也包含了一些项目的约束和规范。
-    
+
 es版本 | [typescript版本](https://github.com/KyLeoHC/vue-startup/tree/typescript)
 
 ## 开发
@@ -109,6 +109,7 @@ npm run stylelint -- --fix
 ## 一些额外说明
 
 1. `services`目录的是各种服务代码，一个服务包括了数据获取、数据缓存、数据转换、相关业务处理等逻辑;
+
 2. `common`和`utils`两个目录有其相似的地方，都是一些全局通用函数或者工具函数，不同之处在于`common`目录的代码是带有当前项目业务性质的，跨项目不一定通用;
 
 ## 关于本项目
