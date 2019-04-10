@@ -1,11 +1,17 @@
+const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const lessToJs = require('less-vars-to-js');
 const webpack = require('webpack');
 const config = require('../config');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const devMode = process.env.BUILD_ENV === 'development';
+const themeVariables = lessToJs(
+  fs.readFileSync(path.join(__dirname, '../src/styles/ui-theme-vars.scss'), 'utf8'),
+  { stripPrefix: true }
+);
 
 process.env.NODE_ENV = devMode ? 'development' : 'production';
 
@@ -93,10 +99,7 @@ const baseConfig = {
             loader: 'less-loader',
             options: {
               modifyVars: {
-                // 这里可以修改vant的一些主题色
-                // red: '#329a39'
-                // blue: '#3eaf7c',
-                // orange: '#f08d49'
+                ...themeVariables
               }
             }
           }
