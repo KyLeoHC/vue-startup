@@ -1,19 +1,20 @@
 @import "variable";
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 .color-333 {
-  color: #333
+  color: #333;
 }
 
 .color-666 {
-  color: #666
+  color: #666;
 }
 
 .color-999 {
-  color: #999
+  color: #999;
 }
 
 .reset-input-style {
@@ -53,17 +54,17 @@ html, body {
 input {
   &::-webkit-input-placeholder { /* WebKit browsers */
     font-size: 28px; /* px */
-    color: $placeholder-color
+    color: $placeholder-color;
   }
 
   &::-moz-placeholder {
     /* Mozilla Firefox 19+ */
     font-size: 28px; /* px */
-    color: $placeholder-color
+    color: $placeholder-color;
   }
 
   &:-ms-input-placeholder { /* Internet Explorer 10+ */
     font-size: 28px; /* px */
-    color: $placeholder-color
+    color: $placeholder-color;
   }
 }

@@ -48,6 +48,7 @@
 
     .logo {
       $w: 200px;
+
       width: $w; /* rem */
       height: $w; /* rem */
       margin: 20px auto 10px auto;
