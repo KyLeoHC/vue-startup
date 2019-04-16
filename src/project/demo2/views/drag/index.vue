@@ -49,7 +49,8 @@
       margin-bottom: 20px;
     }
 
-    .shuffle-list-enter, .shuffle-list-leave-to {
+    .shuffle-list-enter,
+    .shuffle-list-leave-to {
       opacity: 0;
       transform: scale(0);
       will-change: opacity, transform;
@@ -60,7 +61,7 @@
     }
 
     .shuffle-list-move {
-      transition: transform .5s;
+      transition: transform 0.5s;
     }
 
     ul {
@@ -75,7 +76,7 @@
         padding: 6px 10px;
         margin: 2px;
         border: 1px solid #666;
-        transition: all .5s;
+        transition: all 0.5s;
         text-align: center;
         white-space: nowrap;
         overflow: hidden;

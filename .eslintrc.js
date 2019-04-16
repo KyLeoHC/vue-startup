@@ -65,6 +65,7 @@ module.exports = {
     {
       'files': ['*.vue'],
       'rules': {
+        'no-trailing-spaces': 'off',
         '@typescript-eslint/indent': 'off'
       }
     }
