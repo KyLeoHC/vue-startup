@@ -11,8 +11,9 @@
       <div>name: {{ $route.query.name }}</div>
       <div>email: {{ $route.query.email }}</div>
     </div>
-    <a href="javascript:;" @click="linkToDemo2">
-      跳转到demo2
+    <a href="javascript:;"
+       @click="linkToDemo2">
+      {{ linkText }}
     </a>
   </div>
 </template>
