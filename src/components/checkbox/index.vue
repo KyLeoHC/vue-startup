@@ -2,13 +2,15 @@
   <div :class="{
     'checkbox': 1,
     'checkbox--disabled': disabled
-  }">
+  }"
+  >
     <label v-bind="{'for': id}">
       <span :class="{
         'iconfont': 1,
         'icon-checkbox': checked,
         'icon-checkbox-unselected': !checked
-      }">
+      }"
+      >
       </span>
       <slot></slot>
     </label>
@@ -16,7 +18,8 @@
            v-model="checked"
            v-bind="{ id, disabled }"
            @change="onChange"
-           hidden>
+           hidden
+    >
   </div>
 </template>
 <script>

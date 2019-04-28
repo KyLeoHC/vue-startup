@@ -1,7 +1,8 @@
 <template>
   <div class="tooltip"
        v-clickoutside="hide"
-       @click="toggle">
+       @click="toggle"
+  >
     <slot/>
   </div>
 </template>

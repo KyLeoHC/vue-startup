@@ -3,7 +3,8 @@
     <van-nav-bar
       title="Detail"
       left-arrow
-      @click-left="onClickLeft">
+      @click-left="onClickLeft"
+    >
     </van-nav-bar>
     <div class="logo"></div>
     <header>user info</header>
