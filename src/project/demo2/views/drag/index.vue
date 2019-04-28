@@ -2,33 +2,39 @@
   <div class="drag-container">
     <div class="list-operation-group">
       <button type="button"
-              @click="onClickAdd">
+              @click="onClickAdd"
+      >
         add item
       </button>
       <button type="button"
-              @click="onClickDelete">
+              @click="onClickDelete"
+      >
         delete item
       </button>
       <button type="button"
-              @click="onClickShuffleBtn">
+              @click="onClickShuffleBtn"
+      >
         shuffle
       </button>
       <button type="button"
-              @click="onClickTimingShuffleBtn">
+              @click="onClickTimingShuffleBtn"
+      >
         {{ intervalId ? 'stop' : 'start' }} timing shuffle
       </button>
     </div>
     <transition-group name="shuffle-list" tag="ul">
       <li v-for="(item, index) in list"
           :key="item.id"
-          :class="{'item--drag': item.isDragging, 'item--enter': item.isDragEnter}">
+          :class="{'item--drag': item.isDragging, 'item--enter': item.isDragEnter}"
+      >
         <div draggable="true"
              @dragstart="onDragStart(item, index)"
              @dragend="onDragEnd(item)"
              @drop="onDrop(item)"
              @dragenter="onDragEnter(item, index)"
              @dragleave="onDragLeave(item)"
-             @dragover.prevent>
+             @dragover.prevent
+        >
           {{ item.text }}-{{ item.id | doubleNumberString }}
         </div>
       </li>

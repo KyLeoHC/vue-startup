@@ -3,22 +3,26 @@
     <van-nav-bar
       title="List"
       left-arrow
-      @click-left="onClickLeft">
+      @click-left="onClickLeft"
+    >
     </van-nav-bar>
     <van-pull-refresh
       v-model="isRefreshing"
-      @refresh="onRefresh">
+      @refresh="onRefresh"
+    >
       <van-list
         v-model="isLoadingMore"
         :error.sync="isError"
         :finished="finished"
         finished-text="没有更多了"
         error-text="请求失败，点击重新加载"
-        @load="onLoad">
+        @load="onLoad"
+      >
         <div class="item"
              v-for="(item, index) in list"
              :key="item.id"
-             @click="linkToDetail(item)">
+             @click="linkToDetail(item)"
+        >
           <p>{{ item.time }}</p>
           <p>{{ index }} - {{ item.name }}</p>
           <p>{{ item.email }}</p>

@@ -3,7 +3,8 @@
     <van-nav-bar
       title="Detail"
       left-arrow
-      @click-left="onClickLeft">
+      @click-left="onClickLeft"
+    >
     </van-nav-bar>
     <div class="logo"></div>
     <header>user info</header>
@@ -12,7 +13,8 @@
       <div>email: {{ $route.query.email }}</div>
     </div>
     <a href="javascript:;"
-       @click="linkToDemo2">
+       @click="linkToDemo2"
+    >
       {{ linkText }}
     </a>
   </div>
