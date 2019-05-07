@@ -46,7 +46,8 @@ const baseConfig = {
       },
       {
         test: /\.([jt]s)x?$/,
-        exclude: /node_modules/,
+        // 如果还有其它需要babel处理的模块，请在这里添加
+        include: [path.resolve(__dirname, '../src')],
         use: {
           loader: 'babel-loader'
         }
