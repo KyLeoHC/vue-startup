@@ -2,7 +2,7 @@
 
 一个基于vue的示例项目，既是一个单页应用，也是一个多页应用。与此同时，也包含了一些项目的约束和规范。
 
-[es版本](https://github.com/KyLeoHC/vue-startup) | typescript版本
+[es版本](https://github.com/KyLeoHC/vue-startup/tree/master) | typescript版本
 
 ## 开发
 
@@ -104,10 +104,9 @@ npm run stylelint -- --fix
 │   │   ......
 │   ├── services: 项目全局通用服务代码目录
 │   ├── styles: 项目全局样式目录
-│   │   ├── common.styl
-│   │   ├── mobile.styl
+│   │   ├── common.scss
 │   │   ├── normalize.css
-│   │   └── theme.styl
+│   │   └── theme.scss
 │   └── utils: 项目全局通用工具函数目录(此目录的通用代码是全部与业务逻辑解耦的，跨项目可通用)
 └── static: 项目静态资源放置目录
     └── images: 项目图片资源放置目录
