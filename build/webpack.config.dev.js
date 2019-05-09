@@ -28,35 +28,17 @@ baseConfig.plugins.push(new InlineSourceWebpackPlugin({
 baseConfig.plugins.push(new webpack.NamedModulesPlugin());
 baseConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 
-baseConfig.devServer = {
+baseConfig.devServer = Object.assign({
   hot: true,
   inline: true,
   // open: true,
   contentBase: './',
   host: '0.0.0.0',
   disableHostCheck: true,
-  port: config.port,
   stats: {
     children: false
-  },
-  proxy: {},
-  historyApiFallback: {
-    rewrites: [
-      {
-        from: /^\/dev\/.*$/,
-        to(context) {
-          return context.parsedUrl.pathname.replace(/^\/dev\/([-a-zA-Z0-9]+)\/.*$/, `/dev/$1/index.html`);
-        }
-      },
-      {
-        from: /^\/dist\/.*$/,
-        to(context) {
-          return context.parsedUrl.pathname.replace(/^\/dist\/([-a-zA-Z0-9]+)\/.*$/, `/dist/$1/index.html`);
-        }
-      }
-    ]
   }
-};
+}, config.devServer);
 
 baseConfig.mode = 'development';
 baseConfig.devtool = 'cheap-module-eval-source-map';
