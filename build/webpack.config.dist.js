@@ -39,9 +39,9 @@ baseConfig.optimization = {
     }
   },
   minimizer: [
-    // more options:
-    // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
     new UglifyJsPlugin({
+      // more options:
+      // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
       parallel: true,
       uglifyOptions: {
         compress: {
@@ -76,9 +76,9 @@ Object.keys(baseConfig.entry).forEach(name => {
 });
 
 baseConfig.plugins = baseConfig.plugins.concat([
-  // more options:
-  // https://github.com/KyLeoHC/inline-source-webpack-plugin
   new InlineSourceWebpackPlugin({
+    // more options:
+    // https://github.com/KyLeoHC/inline-source-webpack-plugin
     compress: true,
     rootpath: './src'
   }),
