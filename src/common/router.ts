@@ -37,7 +37,7 @@ const router: Router = {
     }: RouterOptions
   ): string {
     const queryList = [];
-    for (let key in query) {
+    for (const key in query) {
       queryList.push(`${key}=${encodeURIComponent(query[key])}`);
     }
     return history

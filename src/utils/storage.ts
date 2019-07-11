@@ -23,7 +23,7 @@ const storage = {
       }
     },
     get(key = '', needConvert: boolean): any {
-      let value = this._sessionStorage.getItem(key) || '';
+      const value = this._sessionStorage.getItem(key) || '';
       return needConvert && value
         ? JSON.parse(value)
         : value;
@@ -53,7 +53,7 @@ const storage = {
       }
     },
     get(key = '', needConvert: boolean): any {
-      let value = this._localStorage.getItem(key) || '';
+      const value = this._localStorage.getItem(key) || '';
       return needConvert && value
         ? JSON.parse(value)
         : value;

@@ -12,13 +12,13 @@ const dateFormat = (date: number | string | Date, format = 'yyyy-MM-dd hh:mm:ss'
     return '';
   }
   const map: { [index: string]: number } = {
-    'M': dateObj.getMonth() + 1, // 月份
-    'd': dateObj.getDate(), // 日
-    'h': dateObj.getHours(), // 小时
-    'm': dateObj.getMinutes(), // 分
-    's': dateObj.getSeconds(), // 秒
-    'q': Math.floor((dateObj.getMonth() + 3) / 3), // 季度
-    'S': dateObj.getMilliseconds() // 毫秒
+    M: dateObj.getMonth() + 1, // 月份
+    d: dateObj.getDate(), // 日
+    h: dateObj.getHours(), // 小时
+    m: dateObj.getMinutes(), // 分
+    s: dateObj.getSeconds(), // 秒
+    q: Math.floor((dateObj.getMonth() + 3) / 3), // 季度
+    S: dateObj.getMilliseconds() // 毫秒
   };
 
   format = format.replace(/([yMdhmsqS])+/g, function (all: string, t: FormatIndex): string {
