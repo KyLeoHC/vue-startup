@@ -55,7 +55,8 @@ module.exports = {
       'named': 'never',
       'asyncArrow': 'ignore'
     }],
-    'semi': ['error', 'always']
+    'semi': ['error', 'always'],
+    'lines-between-class-members': 0
   },
   overrides: [
     {
