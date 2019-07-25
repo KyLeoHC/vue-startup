@@ -1,7 +1,7 @@
 /*
  * OmitCSSWebpackPlugin插件
  * 禁止HtmlWebpackPlugin输出css的<link>,提取需要加载的css赋值到全局变量(用作后续异步加载)
- * By KyLeo 2018.09.30
+ * @author KyLeo
  */
 class OmitCSSWebpackPlugin {
   getCode(list = []) {
