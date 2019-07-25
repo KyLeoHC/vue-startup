@@ -126,7 +126,8 @@ npm run stylelint -- --fix
 空值的字段表明`null`或者`undefined`类型，让ts编译器提醒数据使用方此字段可能是空，让使用方加入空数据处理逻辑就好；
 
 4. 由于本项目的构建是基于babel7对ts的支持去实现，需要单独运行tsc命令去执行ts类型检查，但是由于目前ts的编译器本身是无法识别vue单文件组件里面的script代码，
-所以本项目所有vue组件的ts代码全部需要抽离出单独ts代码文件，再通过src属性引入。
+所以本项目所有vue组件的ts代码全部需要抽离出单独ts代码文件，再通过src属性引入。另外，babel7对于ts的支持并不是完美的，但是总体用起来问题不大，参阅
+[链接](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/)。
 
 ## 关于本项目
 
