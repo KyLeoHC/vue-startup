@@ -43,6 +43,10 @@ axiosInstance.interceptors.response.use(function (response): any {
   // 全局响应异常处理
   if (isCancel(error)) {
     console.log('Request canceled:', error);
+  } else if (/timeout\sof[\w\s]+exceeded/.test(error.toString())) {
+    console.log('请求超时!');
+  } else if (/Request failed/.test(error.toString())) {
+    console.log('请求异常!');
   }
   return Promise.reject(error);
 });
