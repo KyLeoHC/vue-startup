@@ -29,6 +29,8 @@
     text-align: center;
 
     .home__link-group {
+      list-style: none;
+
       li {
         margin-bottom: 6px;
 
