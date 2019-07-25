@@ -91,7 +91,7 @@ baseConfig.plugins = baseConfig.plugins.concat([
   })
 ]);
 
-if (process.env.BUILD_ENV === 'production') {
+if (config.copyStaticDirectory) {
   baseConfig.plugins.push(new CopyWebpackPlugin([{
     from: path.resolve(__dirname, '../static'),
     to: 'static',

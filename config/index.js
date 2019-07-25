@@ -31,5 +31,7 @@ module.exports = Object.assign({
   // 执行编译任务前需要清理文件以及文件夹
   cleanFiles: ['./dist.zip', './dist'],
   // 图片等静态资源的cdn路径
-  cdnPrefix: 'http://10.4.50.122:8087'
+  cdnPrefix: 'http://10.4.50.122:8087',
+  // 是否复制移动静态资源目录
+  copyStaticDirectory: false
 }, config);
