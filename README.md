@@ -2,7 +2,7 @@
 
 一个基于vue的示例项目，既是一个单页应用，也是一个多页应用。与此同时，也包含了一些项目的约束和规范。
 
-[es版本](https://github.com/KyLeoHC/vue-startup/tree/master) | typescript版本
+typescript版本 | [es版本](https://github.com/KyLeoHC/vue-startup/tree/master)
 
 ## 开发
 
