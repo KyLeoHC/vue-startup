@@ -1,4 +1,5 @@
 import http from '@/common/http';
+import { DEMO_LIST_API } from '@/common/api';
 
 /**
  * 列表项数据结构
@@ -66,7 +67,7 @@ const fetchListData = (
   }
 ): Promise<ListData> => {
   return new Promise<ListData>((resolve, reject): void => {
-    http.get<ListData>('/list', { params })
+    http.get<ListData>(DEMO_LIST_API, { params })
       .then((response): void => {
         const data: ListData = new ListData(response.data);
         // 这里进行数据处理
