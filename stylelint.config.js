@@ -12,6 +12,7 @@ module.exports = {
       ignore: ['inside-block', 'blockless-after-same-name-blockless']
     }],
     'comment-whitespace-inside': 'always',
-    'scss/double-slash-comment-whitespace-inside': 'always'
+    'scss/double-slash-comment-whitespace-inside': 'always',
+    'no-descending-specificity': null
   }
 };
