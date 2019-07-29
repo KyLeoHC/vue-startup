@@ -8,7 +8,7 @@ const router = {
   history: true,
   generateUrl({ history = this.history, project = '', path = '', query = {} }) {
     const queryList = [];
-    for (let key in query) {
+    for (const key in query) {
       queryList.push(`${key}=${encodeURIComponent(query[key])}`);
     }
     return history

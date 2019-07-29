@@ -1,6 +1,6 @@
 let baseUrl = '';
 let staticPath = '';
-let publicPath = process.env.PUBLIC_PATH || '';
+const publicPath = process.env.PUBLIC_PATH || '';
 
 switch (process.env.BUILD_ENV) {
   case 'development':

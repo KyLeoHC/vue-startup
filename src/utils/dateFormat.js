@@ -4,19 +4,21 @@
  * @param format 'yyyy-MM-dd hh:mm:ss'
  * @returns {*}
  */
-const dateFormat = (date, format) => {
-  const dateObj = typeof date === 'object' ? date : new Date(date);
+const dateFormat = (date, format = 'YYYY-MM-DD HH:mm:ss') => {
+  const dateObj = typeof date === 'object'
+    ? date
+    : new Date(typeof date === 'string' ? date.replace(/-/g, '/') : date);
   if (!dateObj || dateObj.toUTCString() === 'Invalid Date') {
     return '';
   }
   const map = {
-    'M': dateObj.getMonth() + 1, // 月份
-    'd': dateObj.getDate(), // 日
-    'h': dateObj.getHours(), // 小时
-    'm': dateObj.getMinutes(), // 分
-    's': dateObj.getSeconds(), // 秒
-    'q': Math.floor((dateObj.getMonth() + 3) / 3), // 季度
-    'S': dateObj.getMilliseconds() // 毫秒
+    M: dateObj.getMonth() + 1, // 月份
+    d: dateObj.getDate(), // 日
+    h: dateObj.getHours(), // 小时
+    m: dateObj.getMinutes(), // 分
+    s: dateObj.getSeconds(), // 秒
+    q: Math.floor((dateObj.getMonth() + 3) / 3), // 季度
+    S: dateObj.getMilliseconds() // 毫秒
   };
 
   format = format || 'yyyy-MM-dd hh:mm:ss';
