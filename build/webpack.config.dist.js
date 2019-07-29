@@ -1,10 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 const config = require('../config');
 const baseConfig = require('./webpack.config.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const InlineSourceWebpackPlugin = require('inline-source-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -18,7 +17,8 @@ baseConfig.output = {
 };
 
 baseConfig.optimization = {
-  namedChunks: true,
+  chunkIds: 'size',
+  moduleIds: 'hashed',
   runtimeChunk: 'single',
   splitChunks: {
     name: true,
@@ -39,17 +39,16 @@ baseConfig.optimization = {
     }
   },
   minimizer: [
-    new UglifyJsPlugin({
+    new TerserPlugin({
       // more options:
-      // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+      // https://github.com/terser-js/terser
       parallel: true,
-      uglifyOptions: {
+      terserOptions: {
         compress: {
           drop_console: true
         },
         output: {
-          comments: false,
-          beautify: false
+          comments: false
         }
       }
     })
@@ -84,14 +83,13 @@ baseConfig.plugins = baseConfig.plugins.concat([
   }),
   new OmitCSSWebpackPlugin(),
   new OptimizeCSSAssetsPlugin({}),
-  new webpack.HashedModuleIdsPlugin(),
   new MiniCssExtractPlugin({
     filename: '[name]/bundle.[contenthash].css',
     chunkFilename: '[name]/chunk.[contenthash].css'
   })
 ]);
 
-if (process.env.BUILD_ENV === 'production') {
+if (config.copyStaticDirectory) {
   baseConfig.plugins.push(new CopyWebpackPlugin([{
     from: path.resolve(__dirname, '../static'),
     to: 'static',

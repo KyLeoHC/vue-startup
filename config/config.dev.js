@@ -1,4 +1,6 @@
 module.exports = {
+  // 开发环境需要编译的入口
+  entryList: [],
   publicPath: '/dev/',
   bundleAnalyzerReport: false,
   devServer: {

@@ -25,7 +25,6 @@ Object.keys(baseConfig.entry).forEach(name => {
 baseConfig.plugins.push(new InlineSourceWebpackPlugin({
   rootpath: './src'
 }));
-baseConfig.plugins.push(new webpack.NamedModulesPlugin());
 baseConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 
 baseConfig.devServer = Object.assign({
