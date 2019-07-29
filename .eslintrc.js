@@ -48,7 +48,8 @@ module.exports = {
     'indent': ['error', 2, {
       'SwitchCase': 1
     }],
-    'semi': ['error', 'always']
+    'semi': ['error', 'always'],
+    'lines-between-class-members': 0
   },
   'overrides': [
     {
