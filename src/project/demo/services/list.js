@@ -1,7 +1,10 @@
 import http from '@/common/http';
+import {
+  DEMO_LIST_API
+} from '@/common/api';
 
 const fetchListData = params => {
-  return http.get('/list', { params })
+  return http.get(DEMO_LIST_API, { params })
     .then(response => {
       // 这里进行数据处理
       response.data.list.forEach(item => {
