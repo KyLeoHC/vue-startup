@@ -11,7 +11,7 @@
     "build:pre": "npm run clean && npm run type-check && cross-env BUILD_ENV=pre-production webpack --config ./build/webpack.config.dist.js",
     "build:prod": "npm run clean && npm run type-check && cross-env BUILD_ENV=production webpack --config ./build/webpack.config.dist.js",
     "lint": "eslint --ext .js,.vue,.ts src tests",
-    "stylelint": "stylelint 'src/**/*.{vue,htm,html,css,sss,less,scss,sass}'",
+    "stylelint": "stylelint src/**/*.{vue,htm,html,css,sss,less,scss,sass}",
     "test:unit": "jest"
   },
   "devDependencies": {
