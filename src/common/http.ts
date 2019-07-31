@@ -54,7 +54,7 @@ axiosInstance.interceptors.response.use(function (response): any {
 /**
  * 服务端返回的响应数据整体结构
  */
-export interface ServerResponse<T> {
+export interface ServerResponse<T = any> {
   /** 服务端响应状态 */
   code: number;
   /** 发生异常时返回的额外文本信息 */
@@ -115,11 +115,10 @@ class Http {
   public get<T>(url: string, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
     config = this._processCancelTokenConfig(url, config);
     return new Promise((resolve, reject): void => {
-      this._axiosInstance.get(url, config)
+      this._axiosInstance.get<ServerResponse<T>, ServerResponse<T>>(url, config)
         .then((response): void => {
-          // 由于我们在interceptors.response中取出了实际服务端返回的响应数据
-          // 所以这里拿到的实际response数据并不是AxiosResponse类型，需要强制转换下
-          resolve(response as unknown as ServerResponse<T>);
+          // 在interceptors.response中取出了实际服务端返回的响应数据
+          resolve(response);
         })
         .catch((error): void => {
           if (!isCancel(error)) {
@@ -143,9 +142,9 @@ class Http {
   public post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ServerResponse<T>> {
     config = this._processCancelTokenConfig(url, config);
     return new Promise((resolve, reject): void => {
-      this._axiosInstance.post(url, data, config)
+      this._axiosInstance.post<ServerResponse<T>, ServerResponse<T>>(url, data, config)
         .then((response): void => {
-          resolve(response as unknown as ServerResponse<T>);
+          resolve(response);
         })
         .catch((error): void => {
           if (!isCancel(error)) {
