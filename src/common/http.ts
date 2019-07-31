@@ -117,18 +117,18 @@ class Http {
     return new Promise((resolve, reject): void => {
       this._axiosInstance.get<ServerResponse<T>, ServerResponse<T>>(url, config)
         .then((response): void => {
+          // 正常请求结束，移除对应请求url的canceler
+          this._cancelerMap.delete(url);
           // 在interceptors.response中取出了实际服务端返回的响应数据
           resolve(response);
         })
         .catch((error): void => {
           if (!isCancel(error)) {
+            // 取消请求的异常，这里不需要处理对应请求url的canceler，因为已经被_processCancelTokenConfig方法处理了
+            this._cancelerMap.delete(url);
             // 取消请求的异常不会reject
             reject(error);
           }
-        })
-        .finally((): void => {
-          // 请求结束，移除对应请求url的canceler
-          this._cancelerMap.delete(url);
         });
     });
   }
@@ -144,15 +144,14 @@ class Http {
     return new Promise((resolve, reject): void => {
       this._axiosInstance.post<ServerResponse<T>, ServerResponse<T>>(url, data, config)
         .then((response): void => {
+          this._cancelerMap.delete(url);
           resolve(response);
         })
         .catch((error): void => {
           if (!isCancel(error)) {
+            this._cancelerMap.delete(url);
             reject(error);
           }
-        })
-        .finally((): void => {
-          this._cancelerMap.delete(url);
         });
     });
   }
