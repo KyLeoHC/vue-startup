@@ -26,11 +26,13 @@ baseConfig.optimization = {
     cacheGroups: {
       vendor: {
         name: 'vendor',
+        chunks: 'all',
         enforce: true,
         test: /[\\/]node_modules[\\/]/
       },
       common: {
         name: 'common',
+        chunks: 'all',
         enforce: true, // 如果不设置这个enforce值，webpack内部会有个自动优化机制，模块数量达到一定数量时，当前配置会被webpack自动调整，生成的chunk会有所不一样
         test: /[\\/]src[\\/]common[\\/]/
       }
