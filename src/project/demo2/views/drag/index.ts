@@ -2,10 +2,10 @@ import { Vue, Component } from 'vue-property-decorator';
 
 class ListItem {
   public static uid = 0;
-  public id: number = 0;
-  public text: string = 'item';
-  public isDragging: boolean = false;
-  public isDragEnter: boolean = false;
+  public id = 0;
+  public text = 'item';
+  public isDragging = false;
+  public isDragEnter = false;
 
   public constructor() {
     this.id = ListItem.uid++;

@@ -103,7 +103,7 @@ class Http {
    * 检查指定的请求是否正在发送，尚未完成
    * @param url
    */
-  public checkRequestSending(url: string = ''): boolean {
+  public checkRequestSending(url = ''): boolean {
     return this._cancelerMap.has(url);
   }
 

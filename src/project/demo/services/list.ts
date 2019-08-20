@@ -6,11 +6,11 @@ import { DEMO_LIST_API } from '@/common/api';
  */
 export class ListItem {
   /** id */
-  public id: string = '';
+  public id = '';
   /** 名字 */
-  public name: string = '';
+  public name = '';
   /** 电子邮箱 */
-  public email: string = '';
+  public email = '';
   /** 处理时间 */
   public time?: number;
 
@@ -42,7 +42,7 @@ export class ListData {
   /** 数组列表 */
   public list: ListItem[] = [];
   /** 总数 */
-  public total: number = 0;
+  public total = 0;
 
   public constructor(data: ListData | null | undefined) {
     if (data) {

@@ -7,12 +7,12 @@ import {
 @Component
 export default class List extends Vue {
   public list: ListItem[] = [];
-  public page: number = 0;
-  public pageSize: number = 20;
-  public isError: boolean = false;
-  public isRefreshing: boolean = false;
-  public isLoadingMore: boolean = false;
-  public finished: boolean = false;
+  public page = 0;
+  public pageSize = 20;
+  public isError = false;
+  public isRefreshing = false;
+  public isLoadingMore = false;
+  public finished = false;
 
   public onClickLeft(): void {
     history.go(-1);

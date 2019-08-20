@@ -14,7 +14,7 @@ import App from './app.vue';
 // 就算你目标函数内部返回值是Promise，babel也不会识别出并且polyfill这个finally方法
 Promise.resolve().finally();
 loadCSSByArray([
-  `//at.alicdn.com/t/font_1007376_mqnhabrqmch.css`,
+  '//at.alicdn.com/t/font_1007376_mqnhabrqmch.css',
   ...(window.__cssList || [])
 ]).finally((): void => {
   new Vue({
