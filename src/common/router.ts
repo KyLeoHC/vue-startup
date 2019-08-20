@@ -3,6 +3,7 @@
  * @author KyLeo
  */
 import { publicPath } from './env';
+import { stringify } from '@/utils';
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 interface RouterOptions {
@@ -36,13 +37,10 @@ const router: Router = {
       query = {}
     }: RouterOptions
   ): string {
-    const queryList = [];
-    for (const key in query) {
-      queryList.push(`${key}=${encodeURIComponent(query[key])}`);
-    }
+    const queryStr = stringify(query, { encode: true });
     return history
-      ? `//${location.host}${publicPath}${project}${path}?${queryList.join('&')}`
-      : `//${location.host}${publicPath}${project}/index.html#${path || '/'}?${queryList.join('&')}`;
+      ? `//${location.host}${publicPath}${project}${path}?${queryStr}`
+      : `//${location.host}${publicPath}${project}/index.html#${path || '/'}?${queryStr}`;
   },
   push(options: RouterOptions): void {
     const url = this.generateUrl(options);
