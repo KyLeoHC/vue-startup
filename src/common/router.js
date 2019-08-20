@@ -8,9 +8,9 @@ const router = {
   history: true,
   generateUrl({ history = this.history, project = '', path = '', query = {} }) {
     const queryList = [];
-    for (const key in query) {
+    Object.keys(query).forEach(key => {
       queryList.push(`${key}=${encodeURIComponent(query[key])}`);
-    }
+    });
     return history
       ? `//${location.host}${publicPath}${project}${path}?${queryList.join('&')}`
       : `//${location.host}${publicPath}${project}/index.html#${path || '/'}?${queryList.join('&')}`;
