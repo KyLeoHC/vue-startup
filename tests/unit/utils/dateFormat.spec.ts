@@ -18,10 +18,10 @@ describe('test date format function', () => {
   });
 
   test('format timestamp(number) with format option', () => {
-    expect(dateFormat(1555494971754, 'yyyy/MM/dd')).toBe('2019/04/17');
+    expect(dateFormat(1555494971754, 'YYYY/MM/DD')).toBe('2019/04/17');
   });
 
   test('format date string with format option', () => {
-    expect(dateFormat('2019/04/17 17:56:11', 'yyyy-MM-dd')).toBe('2019-04-17');
+    expect(dateFormat('2019/04/17 17:56:11', 'YYYY-MM-DD')).toBe('2019-04-17');
   });
 });
