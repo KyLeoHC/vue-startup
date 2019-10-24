@@ -3,9 +3,9 @@ import VueRouter from 'vue-router';
 import { publicPath } from '@/common/env';
 import Home from '../views/home/index.vue';
 
-const project = 'demo2';
-
 Vue.use(VueRouter);
+
+const project = 'demo2';
 
 /* eslint @typescript-eslint/explicit-function-return-type: 0 */
 export default new VueRouter({
