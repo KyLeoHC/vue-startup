@@ -13,6 +13,12 @@ export default class List extends Vue {
   public isRefreshing = false;
   public isLoadingMore = false;
   public finished = false;
+  public testObj: { a?: number[] | null; b?: number } = { a: null, b: 0 };
+
+  public mounted(): void {
+    console.log('test optional chaining: ', this.testObj.a?.[1]);
+    console.log('test nullish coalescing operator: ', this.testObj.b ?? 'should be number');
+  }
 
   public onClickLeft(): void {
     history.go(-1);
