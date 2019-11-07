@@ -2,8 +2,6 @@
 
 一个基于vue的示例项目，既是一个单页应用，也是一个多页应用。与此同时，也包含了一些项目的约束和规范。
 
-es版本 | [typescript版本](https://github.com/KyLeoHC/vue-startup/tree/typescript)
-
 ## 开发
 
 ```bash
@@ -13,7 +11,7 @@ git clone https://github.com/KyLeoHC/vue-startup.git
 # 安装依赖(如果不是为了更新依赖包，建议运行npm ci命令，确保依赖包的版本一致，尤其是测试和正式环境的打包)
 npm i 或者 npm ci
 
-# 尽量不要使用cnpm安装，如果实在需要，请仅仅使用淘宝的镜像
+# 使用淘宝镜像
 npm install --registry=https://registry.npm.taobao.org
 
 # 启动服务
