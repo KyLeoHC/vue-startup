@@ -12,34 +12,14 @@
       <div>name: {{ $route.query.name }}</div>
       <div>email: {{ $route.query.email }}</div>
     </div>
-    <a href="javascript:;" @click="linkToDemo2">
-      跳转到demo2
+    <a href="javascript:;"
+       @click="linkToDemo2"
+    >
+      {{ linkText }}
     </a>
   </div>
 </template>
-<script>
-  import router from '@/common/router';
-
-  export default {
-    name: 'Detail',
-    data() {
-      return {};
-    },
-    methods: {
-      onClickLeft() {
-        history.go(-1);
-      },
-      linkToDemo2() {
-        router.push({
-          project: 'demo2',
-          query: {
-            from: 'demo'
-          }
-        });
-      }
-    }
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   @import "~styles/common";
 

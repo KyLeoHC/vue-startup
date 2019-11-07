@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { publicPath } from '@/common/env';
-import Home from '../views/home';
-
-const project = 'demo2';
+import Home from '../views/home/index.vue';
 
 Vue.use(VueRouter);
 
+const project = 'demo2';
+
+/* eslint @typescript-eslint/explicit-function-return-type: 0 */
 export default new VueRouter({
   mode: 'history',
   base: `${publicPath}${project}`,
@@ -19,12 +20,12 @@ export default new VueRouter({
     {
       name: 'vuexTest',
       path: '/vuexTest',
-      component: () => import(/* webpackChunkName: "demo2/vuexTest" */ '../views/vuexTest')
+      component: () => import(/* webpackChunkName: "demo2/vuexTest" */ '../views/vuexTest/index.vue')
     },
     {
       name: 'drag',
       path: '/drag',
-      component: () => import(/* webpackChunkName: "demo2/drag" */ '../views/drag')
+      component: () => import(/* webpackChunkName: "demo2/drag" */ '../views/drag/index.vue')
     }
   ]
 });

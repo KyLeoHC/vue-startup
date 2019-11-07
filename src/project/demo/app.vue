@@ -3,16 +3,7 @@
     <router-view/>
   </div>
 </template>
-<script>
-  export default {
-    name: 'App',
-    data() {
-      return {
-        colorGreen: '#329a39'
-      };
-    }
-  };
-</script>
+<script src="./app.ts"></script>
 <style lang="scss">
   @import "~styles/common";
   @import "~styles/mobile";

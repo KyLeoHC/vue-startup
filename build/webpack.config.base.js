@@ -18,7 +18,7 @@ process.env.NODE_ENV = devMode ? 'development' : 'production';
 const baseConfig = {
   entry: {},
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src'),
@@ -35,7 +35,7 @@ const baseConfig = {
     noParse: /es6-promise\.js$/,
     rules: [
       {
-        test: /\.(js|vue)$/,
+        test: /\.(vue|[jt]sx?)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [path.resolve(__dirname, '../src')],
@@ -45,8 +45,9 @@ const baseConfig = {
         }
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.([jt]s)x?$/,
+        // 如果还有其它需要babel处理的模块，请在这里添加
+        include: [path.resolve(__dirname, '../src')],
         use: {
           loader: 'babel-loader'
         }
@@ -139,7 +140,7 @@ const entryList = config.entryList && config.entryList.length
 // 收集需要编译的入口文件
 entryList.map(function (src) {
   const name = path.basename(src);
-  baseConfig.entry[name] = `./src/project/${name}/index.js`;
+  baseConfig.entry[name] = `./src/project/${name}/index.ts`;
 });
 
 // 收集需要检查样式规范的目录或者文件

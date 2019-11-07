@@ -20,28 +20,7 @@
     </ul>
   </div>
 </template>
-<script>
-  import router from '@/common/router';
-  import Logo from '../../components/logo';
-
-  export default {
-    name: 'Home',
-    components: {
-      Logo
-    },
-    methods: {
-      linkToDemo() {
-        router.push({
-          project: 'demo',
-          path: '/list',
-          query: {
-            from: 'demo2'
-          }
-        });
-      }
-    }
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   @import "~styles/common";
 
@@ -50,6 +29,8 @@
     text-align: center;
 
     .home__link-group {
+      list-style: none;
+
       li {
         margin-bottom: 6px;
 

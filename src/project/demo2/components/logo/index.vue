@@ -1,21 +1,7 @@
 <template>
   <div class="logo" @click="onClickLogo"></div>
 </template>
-<script>
-  import { mapActions } from 'vuex';
-
-  export default {
-    name: 'Logo',
-    methods: {
-      ...mapActions('share', [
-        'sendClickEvent'
-      ]),
-      onClickLogo() {
-        this.sendClickEvent('clickLogo');
-      }
-    }
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   .logo {
     $w: 200px;

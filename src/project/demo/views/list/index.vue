@@ -31,58 +31,7 @@
     </van-pull-refresh>
   </div>
 </template>
-<script>
-  import { fetchListData } from '../../services/list';
-
-  export default {
-    name: 'List',
-    data() {
-      return {
-        list: [],
-        page: 0,
-        pageSize: 20,
-        isError: false,
-        isRefreshing: false,
-        isLoadingMore: false,
-        finished: false
-      };
-    },
-    methods: {
-      onClickLeft() {
-        history.go(-1);
-      },
-      onRefresh() {
-        this.loadData(true);
-      },
-      onLoad() {
-        this.loadData();
-      },
-      loadData(reset = false) {
-        this.page = reset ? 0 : this.page;
-        fetchListData({
-          page: ++this.page,
-          pageSize: this.pageSize
-        }).then(data => {
-          this.list = reset ? data.list : this.list.concat(data.list);
-          this.finished = this.list.length >= data.total;
-        }).catch(response => {
-          this.isError = true;
-        }).finally(() => {
-          this.isRefreshing = false;
-          this.isLoadingMore = false;
-        });
-      },
-      linkToDetail(item) {
-        this.$router.push({
-          name: 'detail',
-          query: {
-            ...item
-          }
-        });
-      }
-    }
-  };
-</script>
+<script src="./index.ts"></script>
 <style lang="scss">
   @import "~styles/common";
 

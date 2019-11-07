@@ -3,10 +3,24 @@
  * @author KyLeo
  */
 
-function createStorage(type = 'local') {
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+
+interface Storage {
+  set(key: string, value: any): void;
+
+  get<T>(key: string, needConvert?: boolean): T;
+
+  remove(key: string): void;
+
+  clear(): void;
+}
+
+function createStorage(
+  type: 'session' | 'local' = 'local'
+): Storage {
   const container = type === 'session' ? window.sessionStorage : window.localStorage;
   return {
-    set(key, value) {
+    set(key: string, value: any): void {
       try {
         const result = JSON.stringify(value);
         if (/^[{[]/.test(result)) {
@@ -21,16 +35,16 @@ function createStorage(type = 'local') {
         console.warn(`[storage ${type}]:save data fail!`);
       }
     },
-    get(key, needConvert) {
+    get<T>(key = '', needConvert?: boolean): T {
       const value = container.getItem(key) || '';
       return needConvert && value
         ? JSON.parse(value)
         : value;
     },
-    remove(key = '') {
+    remove(key = ''): void {
       container.removeItem(key);
     },
-    clear() {
+    clear(): void {
       container.clear();
     }
   };
