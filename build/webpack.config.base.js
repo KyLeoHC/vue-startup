@@ -27,7 +27,7 @@ const baseConfig = {
   },
   resolveLoader: {
     modules: [
-      path.resolve(__dirname, '../build/rules'),
+      path.resolve(__dirname, 'loaders'),
       'node_modules'
     ]
   },
