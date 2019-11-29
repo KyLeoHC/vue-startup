@@ -67,7 +67,13 @@ const baseConfig = {
             options: {}
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                // 'sass-loader' will use "compressed" output when mode is "production" since v7.3.0
+                outputStyle: 'expanded'
+              }
+            }
           }
         ]
       },
