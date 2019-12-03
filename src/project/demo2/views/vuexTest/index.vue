@@ -7,8 +7,6 @@
 </template>
 <script src="./index.ts"></script>
 <style lang="scss">
-  @import "~styles/common";
-
   .vuex-test-container {
     font-size: 18px;
     text-align: center;

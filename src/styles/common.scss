@@ -1,4 +1,8 @@
-@import "variable";
+@use "variable";
+
+.color-primary {
+  color: variable.$primary-color;
+}
 
 .color-333 {
   color: #333;
