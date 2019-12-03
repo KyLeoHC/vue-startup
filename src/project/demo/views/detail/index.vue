@@ -21,8 +21,6 @@
 </template>
 <script src="./index.ts"></script>
 <style lang="scss">
-  @import "~styles/common";
-
   .detail-container {
     font-size: 18px;
     text-align: center;

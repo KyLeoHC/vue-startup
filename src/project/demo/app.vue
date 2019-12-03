@@ -5,9 +5,9 @@
 </template>
 <script src="./app.ts"></script>
 <style lang="scss">
-  @import "~styles/common";
-  @import "~styles/mobile";
-  @import "~styles/theme";
+  @use "../../styles/common";
+  @use "../../styles/mobile";
+  @use "../../styles/theme";
 
   #app {
     height: 100%;

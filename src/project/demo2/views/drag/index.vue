@@ -44,8 +44,6 @@
 </template>
 <script src="./index.ts"></script>
 <style lang="scss">
-  @import "~styles/common";
-
   .drag-container {
     padding-top: 20px;
     font-size: 18px;

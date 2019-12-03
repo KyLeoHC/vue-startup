@@ -33,8 +33,6 @@
 </template>
 <script src="./index.ts"></script>
 <style lang="scss">
-  @import "~styles/common";
-
   .list-container {
     .item {
       padding: 30px; /* rem */
