@@ -13,7 +13,7 @@
   top: 70px;
   width: 240px; /*px*/
   height: 240px; /*px*/
-  background: url(/static/images/home/ad_xsth.png) no-repeat; /*img url*/
+  background: url(/static/images/home/ad_xsth.png) no-repeat; /*img flex*/
   background-size: contain;
 }
 
@@ -23,6 +23,6 @@
   top: 70px;
   width: 240px; /*px*/
   height: 240px; /*px*/
-  background: url(/static/images/home/ad_jjth.png?t=ss.png) no-repeat; /*img url*/
+  background: url(/static/images/home/ad_jjth.png?t=ss.png) no-repeat; /*img flex*/
   background-size: contain;
 }
